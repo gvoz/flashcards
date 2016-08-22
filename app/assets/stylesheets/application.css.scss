@@ -19,30 +19,26 @@
 #container {
   margin: 48px auto;
   width: 960px;
-}
-
-#container > section {
-  clear: both;
-}
-
-#container > header {
-  margin-bottom: 46px;
-}
-
-#container > header > h1 {
-  float: left;
-  margin: 0;
-}
+  section {
+    clear: both;
+    }
+  header {
+    margin-bottom: 46px;
+    h1 {
+      float: left;
+      margin: 0;
+      }
+    }
+  }
 
 .navigation-links {
   float: right;
-}
+  li {
+    display: inline-block;
+    margin: 0 16px;
+    }
+  }
 
-.navigation-links li {
-  display: inline-block;
-  margin: 0 16px;
-}
-
-/* MISC */
+// MISC
 
 .clearfix:after {content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;} html[xmlns].clearfix{display:block;} * html .clearfix{height:1%;}
