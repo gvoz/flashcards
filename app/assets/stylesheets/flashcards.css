@@ -16,13 +16,8 @@
   margin: 0;
 }
 
-.navigation-links {
-  float: right;
-}
-
-.navigation-links li {
-  display: inline-block;
-  margin: 0 16px;
+.navbar-nav {
+    float: right;
 }
 
 /* MISC */
