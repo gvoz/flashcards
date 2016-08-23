@@ -1,3 +1,4 @@
+# This class work with Flash Cards
 class CardsController < ApplicationController
   def index
     @cards = Card.all
