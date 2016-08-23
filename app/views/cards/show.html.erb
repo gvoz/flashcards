@@ -1,0 +1,12 @@
+<p>
+  <strong>Слово:</strong>
+  <%= @card.original_text %>
+</p>
+<p>
+  <strong>Перевод:</strong>
+  <%= @card.translated_text %>
+</p>
+<p>
+  <strong>Дата:</strong>
+  <%= @card.review_date.strftime("%d/%m/%Y") %>
+</p>

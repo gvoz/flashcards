@@ -1,0 +1,17 @@
+<h2>Список карточек</h2>
+<table class="table table-hover">
+  <thead><tr>
+    <th>Слово</th>
+    <th>Перевод</th>
+    <th>Дата</th>
+  </tr></thead>
+
+  <tbody><% @cards.each do |card| %>
+    <tr>
+      <td><%= card.original_text %></td>
+      <td><%= card.translated_text %></td>
+      <td><%= card.review_date.strftime("%d/%m/%Y") %></td>
+      <td><%= link_to 'Показать', card_path(card) %></td>
+    </tr>
+  <% end %></tbody>
+</table>
