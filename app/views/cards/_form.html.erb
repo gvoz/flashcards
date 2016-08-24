@@ -1,35 +1,14 @@
-<%= form_for @card do |f| %>
+<%= simple_form_for @card, html: { class: 'form-horizontal' },
+  wrapper: :horizontal_form,
+  wrapper_mappings: {
+    date: :horizontal_date
+  } do |f| %>
 
-  <% if @card.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        Исправьте ошибки перед сохранением:
-      </h2>
-      <ul>
-        <% @card.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <p>
-    <%= f.label 'Оригинальный текст' %><br>
-    <%= f.text_field :original_text %>
-  </p>
-
-  <p>
-    <%= f.label 'Переведённый текст' %><br>
-    <%= f.text_field :translated_text %>
-  </p>
-
-  <p>
-    <%= f.label 'Дата пересмотра' %><br>
-    <%= f.date_field :review_date %>
-  </p>
-
-  <p>
-    <%= f.submit 'Сохранить'%>
-  </p>
+  <%= f.error_notification %>
+  <%= f.input :original_text, label: 'Оригинальный текст' %>
+  <%= f.input :translated_text, label: 'Переведённый текст' %>
+  <%= f.input :review_date, label: 'Дата пересмотра', as: :date %>
+  <%= f.submit :class => 'btn btn-primary' %>
+  <%= link_to 'Назад', cards_path, :class => 'btn btn-primary' %>
 
 <% end %>
