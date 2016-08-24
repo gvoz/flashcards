@@ -1,4 +1,4 @@
-# This class work with Flash Cards
+# Home class
 class HomeController < ApplicationController
   def index
   end
