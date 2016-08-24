@@ -1,0 +1,35 @@
+<%= form_for @card do |f| %>
+
+  <% if @card.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        Исправьте ошибки перед сохранением:
+      </h2>
+      <ul>
+        <% @card.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label 'Оригинальный текст' %><br>
+    <%= f.text_field :original_text %>
+  </p>
+
+  <p>
+    <%= f.label 'Переведённый текст' %><br>
+    <%= f.text_field :translated_text %>
+  </p>
+
+  <p>
+    <%= f.label 'Дата пересмотра' %><br>
+    <%= f.date_field :review_date %>
+  </p>
+
+  <p>
+    <%= f.submit 'Сохранить'%>
+  </p>
+
+<% end %>
