@@ -1,0 +1,14 @@
+<%= simple_form_for @card, html: { class: 'form-horizontal' },
+  wrapper: :horizontal_form,
+  wrapper_mappings: {
+    date: :horizontal_date
+  } do |f| %>
+
+  <%= f.error_notification %>
+  <%= f.input :original_text, label: 'Оригинальный текст' %>
+  <%= f.input :translated_text, label: 'Переведённый текст' %>
+  <%= f.input :review_date, label: 'Дата пересмотра', as: :date %>
+  <%= f.submit :class => 'btn btn-primary' %>
+  <%= link_to 'Назад', cards_path, :class => 'btn btn-primary' %>
+
+<% end %>
