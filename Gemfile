@@ -49,3 +49,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Use Simple Form
 gem 'simple_form'
+
+# Use Nokogiri
+gem 'nokogiri'

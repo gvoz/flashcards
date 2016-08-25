@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require "nokogiri"
+require "open-uri"
+
+@page = Nokogiri::HTML(open("http://www.languagedaily.com/learn-german/vocabulary/common-german-words"))
+
+@page.xpath("//tr").each do |row|
+  original = row.xpath("td[2]").text
+  translated = row.xpath("td[3]").text
+  Card.create( original_text: original, translated_text: translated, review_date: 3.days.from_now )
+end
