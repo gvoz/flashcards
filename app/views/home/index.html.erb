@@ -1,1 +1,8 @@
 <p style="font-size: 22px;">Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
+<%= simple_form_for @card, html: { class: 'form-horizontal' },  wrapper: :horizontal_form do |f| %>
+
+  <%= f.input :translated_text, label: 'Переведённый текст' %>
+  <%= f.input :original_text, label: 'Оригинальный текст' %>
+  <%= f.submit :class => 'btn btn-primary' %>
+
+<% end %>

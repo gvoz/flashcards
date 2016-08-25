@@ -12,4 +12,7 @@ class Card < ApplicationRecord
         original_text.mb_chars.downcase == translated_text.mb_chars.downcase
     end
   end
+
+  scope :reviewed, -> { where('review_date <= ?', Time.now) }
+  scope :random_cards, -> { order('random()') }
 end
