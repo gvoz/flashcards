@@ -4,6 +4,5 @@ Rails.application.routes.draw do
     get :checktranslate, on: :member
   end
 
-  #patch 'cards' => 'cards#checktranslate'
   root 'home#index'
 end
