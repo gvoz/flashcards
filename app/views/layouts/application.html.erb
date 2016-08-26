@@ -19,6 +19,11 @@
           </ul>
         </div>
       </header>
+      <div class="bs-docs-example">
+        <p class="text-error"><%= flash[:error] %></p>
+        <p class="text-warning"><%= flash[:notice] %></p>
+        <p class="text-success"><%= flash[:success] %></p>
+      </div>
       <section><%= yield %></section>
     </section>
   </body>

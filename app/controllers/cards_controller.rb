@@ -43,6 +43,18 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
+  def checktranslate
+    @card = Card.find(params[:id])
+    if params[:user_text].mb_chars.downcase == @card.original_text.mb_chars.downcase
+      flash[:success] = "Правильный перевод"
+      @card.review_date = 3.days.from_now
+      @card.save
+    else
+      flash[:error] = "Неправильный перевод"
+    end
+    redirect_to root_path
+  end
+
   private
 
     def card_params

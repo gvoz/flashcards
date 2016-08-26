@@ -1,8 +1,14 @@
 <p style="font-size: 22px;">Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
-<%= simple_form_for @card, html: { class: 'form-horizontal' },  wrapper: :horizontal_form do |f| %>
+<%= simple_form_for @card, url: checktranslate_card_path(@card.id), method: 'get',
+  html: { class: 'form-horizontal' },  wrapper: :horizontal_form do |f| %>
 
-  <%= f.input :translated_text, label: 'Переведённый текст' %>
-  <%= f.input :original_text, label: 'Оригинальный текст' %>
-  <%= f.submit :class => 'btn btn-primary' %>
+  <%= f.input :translated_text, label: 'Текст', disabled: true, required: false %>
+
+  <div class="form-group text required card_original_text">
+    <%= label_tag(:user_text, "Введите перевод", class: "text required col-sm-3 control-label") %>
+    <div class="col-sm-9"><%= text_area_tag(:user_text, '', class: "text required form-control") %></div>
+  </div>
+
+  <%= f.button :submit, 'Проверить перевод', :class => 'btn btn-primary' %>
 
 <% end %>
