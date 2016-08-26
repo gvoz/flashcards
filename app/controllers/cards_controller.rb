@@ -44,7 +44,7 @@ class CardsController < ApplicationController
   end
 
   def checktranslate
-    if Card.check_translate(params[:id], params[:user_text])
+    if Card.check_translate?(params[:id], params[:user_text])
       flash[:success] = "Правильный перевод"
     else
       flash[:error] = "Неправильный перевод"
