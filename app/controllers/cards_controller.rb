@@ -44,11 +44,8 @@ class CardsController < ApplicationController
   end
 
   def checktranslate
-    @card = Card.find(params[:id])
-    if params[:user_text].mb_chars.downcase == @card.original_text.mb_chars.downcase
+    if Card.check_translate(params[:id], params[:user_text])
       flash[:success] = "Правильный перевод"
-      @card.review_date = 3.days.from_now
-      @card.save
     else
       flash[:error] = "Неправильный перевод"
     end

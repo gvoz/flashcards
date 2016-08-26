@@ -13,6 +13,17 @@ class Card < ApplicationRecord
     end
   end
 
+  def self.check_translate(id, user_text)
+    @card = Card.find(id)
+    if user_text.mb_chars.downcase == @card.original_text.mb_chars.downcase
+      @card.review_date = 3.days.from_now
+      @card.save
+      return true
+    else
+      return false
+    end
+  end
+
   scope :reviewed, -> { where('review_date <= ?', Time.now) }
   scope :random_cards, -> { order('random()') }
 end
