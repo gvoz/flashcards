@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Card do
-
   it "wrong translation" do
     card = Card.new(original_text: "hause")
     expect(card.check_translation?("battlestart")).to be false
@@ -27,5 +26,4 @@ describe Card do
     card.change_review_date
     expect(card.review_date.strftime("%d/%m/%Y")).to eq 3.days.from_now.strftime("%d/%m/%Y")
   end
-
 end
