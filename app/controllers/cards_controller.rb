@@ -44,8 +44,10 @@ class CardsController < ApplicationController
   end
 
   def checktranslate
-    if Card.check_translate?(params[:id], params[:user_text])
+    @card = Card.find(params[:id])
+    if @card.check_translation?(params[:user_text])
       flash[:success] = "Правильный перевод"
+      @card.change_review_date
     else
       flash[:error] = "Неправильный перевод"
     end
@@ -55,6 +57,6 @@ class CardsController < ApplicationController
   private
 
     def card_params
-      params.require(:card).permit(:original_text, :translated_text, :review_date)
+      params.require(:card).permit(:original_text.to_s.strip, :translated_text.to_s.strip, :review_date)
     end
 end
