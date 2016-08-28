@@ -37,6 +37,10 @@
     float: right;
 }
 
+.text-error {
+    color: #b94a48;
+}
+
 /* MISC */
 
 .clearfix:after {

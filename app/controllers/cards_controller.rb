@@ -43,6 +43,15 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
+  def checktranslate
+    if Card.check_translate?(params[:id], params[:user_text])
+      flash[:success] = "Правильный перевод"
+    else
+      flash[:error] = "Неправильный перевод"
+    end
+    redirect_to root_path
+  end
+
   private
 
     def card_params
