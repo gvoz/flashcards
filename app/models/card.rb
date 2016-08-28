@@ -18,8 +18,7 @@ class Card < ApplicationRecord
   end
 
   def change_review_date
-    self.review_date = 3.days.from_now
-    self.save
+    self.update(review_date: 3.days.from_now)
   end
 
   scope :reviewed, -> { where('review_date <= ?', Time.now) }
