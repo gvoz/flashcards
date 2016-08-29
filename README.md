@@ -1,4 +1,4 @@
-# README (https://travis-ci.org/gvoz/flashcards.svg?branch=seven-task)
+# README [![Build Status](https://travis-ci.org/gvoz/flashcards.svg)](https://travis-ci.org/gvoz/flashcards.svg?branch=seven-task)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
