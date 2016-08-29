@@ -1,25 +1,21 @@
 require "rails_helper"
 
 feature "Card managment", type: :feature do
-  scenario "No card to translate" do
+  let!(:card) { create(:card) }
+
+  before(:each) do
     visit root_path
-    expect(page).to have_content "Нет актуальных карточек для перевода"
   end
 
-  scenario "Check user translation" do
-    create(:card)
-    create(:card)
-    visit root_path
+  it "Check user translation" do
     fill_in :user_text, with: "hause"
     click_button "Проверить перевод"
     expect(page).to have_content "Правильный перевод"
   end
 
-  scenario "Last card" do
-    create(:card)
-    visit root_path
-    fill_in :user_text, with: "hause"
+  it "Last card" do
+    fill_in :user_text, with: "hausse"
     click_button "Проверить перевод"
-    expect(page).to have_content "Нет актуальных карточек для перевода"
+    expect(page).to have_content "Неправильный перевод"
   end
 end
