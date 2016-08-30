@@ -53,3 +53,6 @@ gem 'simple_form'
 
 # Use Nokogiri
 gem 'nokogiri'
+
+# Use Sorcery authentication library
+gem "sorcery"

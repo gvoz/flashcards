@@ -1,0 +1,10 @@
+<%= simple_form_for @user, html: { class: 'form-horizontal' },
+  wrapper: :horizontal_form do |f| %>
+
+  <%= f.error_notification %>
+  <%= f.input :email, label: 'Введите свой e-mail' %>
+  <%= f.input :password, label: 'Введите пароль' %>
+  <%= f.input :password_confirmation, label: 'Повторите пароль' %>
+  <%= f.submit :class => 'btn btn-primary' %>
+
+<% end %>

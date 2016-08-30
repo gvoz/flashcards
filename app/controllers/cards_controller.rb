@@ -1,5 +1,7 @@
 # This class work with Flash Cards
 class CardsController < ApplicationController
+  before_filter :require_login
+
   def index
     @cards = Card.all
   end
