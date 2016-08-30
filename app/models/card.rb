@@ -1,4 +1,5 @@
 class Card < ApplicationRecord
+  belongs_to :user
   validates :original_text, :translated_text, :review_date, presence: true
   validate :original_and_translated_text_not_equal
 
