@@ -3,23 +3,23 @@ class CardsController < ApplicationController
   before_filter :require_login
 
   def index
-    @cards = Card.all
+    @cards = User.find(current_user).cards.all
   end
 
   def show
-    @card = Card.find(params[:id])
+    @card = User.find(current_user).cards.find(params[:id])
   end
 
   def new
-    @card = Card.new
+    @card = User.find(current_user).cards.new
   end
 
   def edit
-    @card = Card.find(params[:id])
+    @card = User.find(current_user).cards.find(params[:id])
   end
 
   def create
-    @card = Card.new(card_params)
+    @card = User.find(current_user).cards.new(card_params)
 
     if @card.save
       redirect_to @card
@@ -29,7 +29,7 @@ class CardsController < ApplicationController
   end
 
   def update
-    @card = Card.find(params[:id])
+    @card = User.find(current_user).cards.find(params[:id])
 
     if @card.update(card_params)
       redirect_to @card
@@ -39,14 +39,14 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    @card = Card.find(params[:id])
+    @card = User.find(current_user).cards.find(params[:id])
     @card.destroy
 
     redirect_to cards_path
   end
 
   def checktranslate
-    @card = Card.find(params[:id])
+    @card = User.find(current_user).cards.find(params[:id])
     if @card.check_translation?(params[:user_text])
       flash[:success] = "Правильный перевод"
       @card.change_review_date

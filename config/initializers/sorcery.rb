@@ -2,7 +2,7 @@
 # The default is nothing which will include only core features (password encryption, login/logout).
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
-Rails.application.config.sorcery.submodules = [:remember_me]
+Rails.application.config.sorcery.submodules = [:remember_me, :external, :session_timeout]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -43,7 +43,8 @@ Rails.application.config.sorcery.configure do |config|
   # Use the last action as the beginning of session timeout.
   # Default: `false`
   #
-  # config.session_timeout_from_last_action =
+  config.session_timeout = 3600 # This is in seconds. You could also write 1.hour
+  config.session_timeout_from_last_action = true # session timeout is calculated from the last valid activity.
 
 
   # -- http_basic_auth --
@@ -76,7 +77,7 @@ Rails.application.config.sorcery.configure do |config|
   # What providers are supported by this app, i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce] .
   # Default: `[]`
   #
-  # config.external_providers =
+  config.external_providers = [:vk, :github, :facebook]
 
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
@@ -115,28 +116,29 @@ Rails.application.config.sorcery.configure do |config|
   # config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
   # config.twitter.user_info_mapping = {:email => "screen_name"}
   #
-  # config.facebook.key = ""
-  # config.facebook.secret = ""
-  # config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
-  # config.facebook.user_info_mapping = {:email => "name"}
-  # config.facebook.access_permissions = ["email", "publish_actions"]
-  # config.facebook.display = "page"
-  # config.facebook.api_version = "v2.2"
+  config.facebook.key = "#{Rails.application.secrets.sorcery_facebook_key}"
+  config.facebook.secret = "#{Rails.application.secrets.sorcery_facebook_secret}"
+  config.facebook.callback_url = "#{Rails.application.secrets.sorcery_facebook_callback_url}"
+  config.facebook.user_info_mapping =  {:email => "email"}
+  config.facebook.scope = "email"
+  config.facebook.access_permissions = ["email", "publish_actions"]
+  config.facebook.display = "page"
+  config.facebook.api_version = "v2.2"
   #
-  # config.github.key = ""
-  # config.github.secret = ""
-  # config.github.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=github"
-  # config.github.user_info_mapping = {:email => "name"}
+  config.github.key = "#{Rails.application.secrets.sorcery_github_key}"
+  config.github.secret = "#{Rails.application.secrets.sorcery_github_secret}"
+  config.github.callback_url = "#{Rails.application.secrets.sorcery_github_callback_url}"
+  config.github.user_info_mapping = {:email => "email"}
   #
   # config.google.key = ""
   # config.google.secret = ""
   # config.google.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=google"
   # config.google.user_info_mapping = {:email => "email", :username => "name"}
   #
-  # config.vk.key = ""
-  # config.vk.secret = ""
-  # config.vk.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=vk"
-  # config.vk.user_info_mapping = {:login => "domain", :name => "full_name"}
+  config.vk.key = "#{Rails.application.secrets.sorcery_vk_key}"
+  config.vk.secret = "#{Rails.application.secrets.sorcery_vk_secret}"
+  config.vk.callback_url = "#{Rails.application.secrets.sorcery_vk_callback_url}"
+  config.vk.user_info_mapping = {:email => "email", :login => "domain", :name => "full_name"}
   #
   # To use liveid in development mode you have to replace mydomain.com with
   # a valid domain even in development. To use a valid domain in development
@@ -436,7 +438,7 @@ Rails.application.config.sorcery.configure do |config|
     # Class which holds the various external provider data for this user.
     # Default: `nil`
     #
-    # user.authentications_class =
+    user.authentications_class = Authentication
 
 
     # User's identifier in authentications class.
