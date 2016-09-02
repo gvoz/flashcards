@@ -453,7 +453,6 @@ Rails.application.config.sorcery.configure do |config|
     #
     # user.provider_attribute_name =
 
-
     # User's external unique identifier in authentications class.
     # Default: `:uid`
     #

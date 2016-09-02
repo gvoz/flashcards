@@ -1,4 +1,4 @@
-#
+# authentication from social network
 class SorceryExternal < ActiveRecord::Migration
   def change
     create_table :authentications do |t|
