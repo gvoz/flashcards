@@ -1,6 +1,6 @@
 # This class work with Flash Cards
 class CardsController < ApplicationController
-  before_filter :require_login
+  before_action :require_login
 
   def index
     @cards = User.find(current_user).cards.all

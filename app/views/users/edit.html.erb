@@ -1,3 +1,7 @@
 <h1>Редактировать профиль</h1>
 
 <%= render 'form' %>
+
+<p>Для входа через соцсети необходимо осуществить их привязку</p>
+<%= link_to 'Привязать к пользователю вконтакте', auth_at_provider_path(:provider => :vk), :class => 'btn btn-primary'  %>
+<%= link_to 'Привязать к пользователю facebook', auth_at_provider_path(:provider => :facebook), :class => 'btn btn-primary'  %>

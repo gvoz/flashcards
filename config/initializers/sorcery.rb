@@ -77,7 +77,7 @@ Rails.application.config.sorcery.configure do |config|
   # What providers are supported by this app, i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce] .
   # Default: `[]`
   #
-  config.external_providers = [:vk, :github, :facebook]
+  config.external_providers = [:vk, :facebook]
 
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
@@ -119,16 +119,16 @@ Rails.application.config.sorcery.configure do |config|
   config.facebook.key = "#{Rails.application.secrets.sorcery_facebook_key}"
   config.facebook.secret = "#{Rails.application.secrets.sorcery_facebook_secret}"
   config.facebook.callback_url = "#{Rails.application.secrets.sorcery_facebook_callback_url}"
-  config.facebook.user_info_mapping =  {:email => "email"}
+  config.facebook.user_info_mapping =  { :email => "name"}
   config.facebook.scope = "email"
   config.facebook.access_permissions = ["email", "publish_actions"]
   config.facebook.display = "page"
   config.facebook.api_version = "v2.2"
   #
-  config.github.key = "#{Rails.application.secrets.sorcery_github_key}"
-  config.github.secret = "#{Rails.application.secrets.sorcery_github_secret}"
-  config.github.callback_url = "#{Rails.application.secrets.sorcery_github_callback_url}"
-  config.github.user_info_mapping = {:email => "email"}
+  # config.github.key = "#{Rails.application.secrets.sorcery_github_key}"
+  # config.github.secret = "#{Rails.application.secrets.sorcery_github_secret}"
+  # config.github.callback_url = "#{Rails.application.secrets.sorcery_github_callback_url}"
+  # config.github.user_info_mapping = {:email => "email"}
   #
   # config.google.key = ""
   # config.google.secret = ""
@@ -138,7 +138,7 @@ Rails.application.config.sorcery.configure do |config|
   config.vk.key = "#{Rails.application.secrets.sorcery_vk_key}"
   config.vk.secret = "#{Rails.application.secrets.sorcery_vk_secret}"
   config.vk.callback_url = "#{Rails.application.secrets.sorcery_vk_callback_url}"
-  config.vk.user_info_mapping = {:email => "email", :login => "domain", :name => "full_name"}
+  config.vk.user_info_mapping = { :email => "name", :email_pr => "name"}
   #
   # To use liveid in development mode you have to replace mydomain.com with
   # a valid domain even in development. To use a valid domain in development

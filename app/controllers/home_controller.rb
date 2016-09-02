@@ -1,7 +1,11 @@
 # Home class
 class HomeController < ApplicationController
   def index
-    @card = User.find(current_user).cards.reviewed.random_cards.first unless current_user.nil?
-    redirect_to cards_path if @card.nil?
+    if current_user
+      @card = User.find(current_user).cards.reviewed.random_cards.first
+      redirect_to cards_path if @card.nil?
+    else
+      redirect_to home_about_path
+    end
   end
 end
