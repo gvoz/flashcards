@@ -119,11 +119,12 @@ Rails.application.config.sorcery.configure do |config|
   config.facebook.key = "#{Rails.application.secrets.sorcery_facebook_key}"
   config.facebook.secret = "#{Rails.application.secrets.sorcery_facebook_secret}"
   config.facebook.callback_url = "#{Rails.application.secrets.sorcery_facebook_callback_url}"
-  config.facebook.user_info_mapping =  { :email => "name"}
+  config.facebook.user_info_mapping =  { :email => "email" }
   config.facebook.scope = "email"
-  config.facebook.access_permissions = ["email", "publish_actions"]
+  config.facebook.access_permissions = %w(email, publish_actions)
   config.facebook.display = "page"
   config.facebook.api_version = "v2.2"
+  config.facebook.user_info_path = "me?fields=email,first_name,last_name,name"
   #
   # config.github.key = "#{Rails.application.secrets.sorcery_github_key}"
   # config.github.secret = "#{Rails.application.secrets.sorcery_github_secret}"
@@ -138,7 +139,7 @@ Rails.application.config.sorcery.configure do |config|
   config.vk.key = "#{Rails.application.secrets.sorcery_vk_key}"
   config.vk.secret = "#{Rails.application.secrets.sorcery_vk_secret}"
   config.vk.callback_url = "#{Rails.application.secrets.sorcery_vk_callback_url}"
-  config.vk.user_info_mapping = { :email => "name", :email_pr => "name"}
+  config.vk.user_info_mapping = { :email => "email" }
   #
   # To use liveid in development mode you have to replace mydomain.com with
   # a valid domain even in development. To use a valid domain in development

@@ -24,7 +24,7 @@ feature "Card managment", type: :feature do
 
   it "Don't see card other users" do
     other_user = create(:user, email: "bob1@mail.ru", password: "pas")
-    other_card = create(:card, user: other_user)
+    create(:card, user: other_user)
     fill_in :user_text, with: "hause"
     click_button "Проверить перевод"
     expect(page).not_to have_content "Введите перевод"

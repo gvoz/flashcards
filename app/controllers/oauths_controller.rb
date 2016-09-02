@@ -5,28 +5,38 @@ class OauthsController < ApplicationController
   # sends the user on a trip to the provider,
   # and after authorizing there back to the callback url.
   def oauth
-    login_at(params[:provider])
+    login_at(provider)
   end
 
   def callback
-    provider = params[:provider]
-    if current_user
-      if @user = add_provider_to_user(provider)
-        redirect_to root_path, success: 'Вы подключили #{provider.titleize}'
-      end
-    elsif @user = login_from(provider)
-      redirect_to root_path, :notice => "Вы вошли через #{provider.titleize}!"
+    check_user_email
+    if @user = login_from(provider)
+      flash[:success] = "Вы вошли через #{provider.titleize}!"
+      redirect_to root_path
     else
       begin
         @user = create_from(provider)
-        # NOTE: this is the place to add '@user.activate!' if you are using user_activation submodule
-
         reset_session # protect from session fixation attack
         auto_login(@user)
-        redirect_to root_path, :notice => "Вы вошли через #{provider.titleize}!"
+        flash[:success] = "Вы вошли через #{provider.titleize}!"
+        redirect_to root_path
       rescue
-        redirect_to home_about_path, :error => "Ошибка входа через #{provider.titleize}!"
+        flash[:error] = "Ошибка входа через #{provider.titleize}!"
+        redirect_to home_about_path
       end
     end
   end
+
+  def check_user_email
+    sorcery_fetch_user_hash provider
+    if @user = User.find_by( email: @user_hash[:user_info]['email'])
+      @user.add_provider_to_user(provider, @user_hash[:uid].to_s) unless Authentication.find_by(uid: @user_hash[:uid].to_s, user_id: @user.id)
+    end
+  end
+
+  private
+
+    def provider
+      params.require(:provider)
+    end
 end

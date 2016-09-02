@@ -6,9 +6,10 @@ class UserSessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password], params[:remember_me])
-      redirect_to root_url, success: 'Вы вошли'
+      flash[:success] = "Вы вошли!"
+      redirect_to root_url
     else
-      flash.now[:error] = 'Email или пароль неправильные'
+      flash[:error] = 'Email или пароль неправильные'
       render :new
     end
   end
