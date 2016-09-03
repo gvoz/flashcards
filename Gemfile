@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'byebug'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'
@@ -53,3 +54,6 @@ gem 'simple_form'
 
 # Use Nokogiri
 gem 'nokogiri'
+
+# Use Sorcery authentication library
+gem "sorcery"

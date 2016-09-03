@@ -1,23 +1,25 @@
 # This class work with Flash Cards
 class CardsController < ApplicationController
+  before_action :require_login
+
   def index
-    @cards = Card.all
+    @cards = Card.user_cards(current_user.id).all
   end
 
   def show
-    @card = Card.find(params[:id])
+    @card = Card.user_cards(current_user.id).find(params[:id])
   end
 
   def new
-    @card = Card.new
+    @card = Card.user_cards(current_user.id).new
   end
 
   def edit
-    @card = Card.find(params[:id])
+    @card = Card.user_cards(current_user.id).find(params[:id])
   end
 
   def create
-    @card = Card.new(card_params)
+    @card = Card.user_cards(current_user.id).new(card_params)
 
     if @card.save
       redirect_to @card
@@ -27,7 +29,7 @@ class CardsController < ApplicationController
   end
 
   def update
-    @card = Card.find(params[:id])
+    @card = Card.user_cards(current_user.id).find(params[:id])
 
     if @card.update(card_params)
       redirect_to @card
@@ -37,14 +39,14 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    @card = Card.find(params[:id])
+    @card = Card.user_cards(current_user.id).find(params[:id])
     @card.destroy
 
     redirect_to cards_path
   end
 
   def checktranslate
-    @card = Card.find(params[:id])
+    @card = Card.user_cards(current_user.id).find(params[:id])
     if @card.check_translation?(params[:user_text])
       flash[:success] = "Правильный перевод"
       @card.change_review_date
@@ -53,6 +55,8 @@ class CardsController < ApplicationController
     end
     redirect_to root_path
   end
+
+
 
   private
 
