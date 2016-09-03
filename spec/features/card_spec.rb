@@ -6,7 +6,7 @@ feature "Card managment", type: :feature do
 
   let!(:card) { create(:card, user: user) }
 
-  before(:each) do
+  before :each do
     login("bob@mail.ru", "qweqweqwe")
   end
 

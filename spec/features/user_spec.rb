@@ -3,20 +3,22 @@ require "support/login_helper"
 
 feature "User managment", type: :feature do
   let!(:user) { create(:user, email: "bob@mail.ru", password: "qweqweqwe") }
+  before :each do
+    login("bob@mail.ru", "qweqweqwe")
+  end
 
   it "Login" do
-    login("bob@mail.ru", "qweqweqwe")
     expect(page).to have_content "Вы вошли"
   end
 
-  it "Incorrect login" do
-    login("bob@mail.ru", "qweqweqqq")
-    expect(page).to have_content "Email или пароль неправильные"
-  end
-
   it "Logout" do
-    login("bob@mail.ru", "qweqweqwe")
     click_link "Выйти"
     expect(page).to have_content "Вы вышли"
+  end
+
+  it "Incorrect login" do
+    click_link "Выйти"
+    login("bob@mail.ru", "pas")
+    expect(page).to have_content "Email или пароль неправильные"
   end
 end

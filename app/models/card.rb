@@ -23,6 +23,10 @@ class Card < ApplicationRecord
     self.update(review_date: 3.days.from_now)
   end
 
+  def self.user_cards(user_id)
+    where(user_id: user_id)
+  end
+
   scope :reviewed, -> { where('review_date <= ?', Time.now) }
   scope :random_cards, -> { order('random()') }
 end
