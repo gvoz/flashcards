@@ -56,4 +56,9 @@ gem 'simple_form'
 gem 'nokogiri'
 
 # Use Sorcery authentication library
-gem "sorcery"
+gem 'sorcery'
+
+# Add images
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
