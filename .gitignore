@@ -15,7 +15,6 @@ config/application.yml
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
-/public/uploads/*
 !/log/.keep
 !/tmp/.keep
 
