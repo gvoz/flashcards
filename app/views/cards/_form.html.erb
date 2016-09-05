@@ -1,14 +1,25 @@
-<%= simple_form_for @card, html: { class: 'form-horizontal' },
+<%= simple_form_for @card, html: { class: 'form-horizontal', :multipart => true },
   wrapper: :horizontal_form,
   wrapper_mappings: {
     date: :horizontal_date
   } do |f| %>
 
   <%= f.error_notification %>
-  <%= f.input :original_text, label: 'Оригинальный текст' %>
-  <%= f.input :translated_text, label: 'Перевод текста' %>
-  <%= f.input :review_date, label: 'Дата пересмотра', as: :date %>
-  <%= f.submit :class => 'btn btn-primary' %>
-  <%= link_to 'Назад', cards_path, :class => 'btn btn-primary' %>
-
+  <div class="row-fluid">
+    <div class="span5"><%= image_tag @card.image_url if @card.image? %></div>
+    <div class="span7">
+      <%= f.input :original_text, label: 'Оригинальный текст' %>
+      <%= f.input :translated_text, label: 'Перевод текста' %>
+      <%= f.input :review_date, label: 'Дата пересмотра', as: :date %>
+      <p>
+        <%= f.file_field :image %>
+      </p>
+      <p>
+        <%= f.label :remote_image_url, "or image URL" %><br />
+        <%= f.text_field :remote_image_url %>
+      </p>
+      <%= f.submit :class => 'btn btn-primary' %>
+      <%= link_to 'Назад', cards_path, :class => 'btn btn-primary' %>
+    </div>
+  </div>
 <% end %>
