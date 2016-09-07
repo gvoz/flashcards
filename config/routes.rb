@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   resources :users
   resources :user_sessions
-  resources :cards do
-    get :checktranslate, on: :member
+  resources :decks do
+    resources :cards do
+      get :checktranslate, on: :member
+    end
   end
 
   root 'home#index'

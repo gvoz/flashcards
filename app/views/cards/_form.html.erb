@@ -1,4 +1,5 @@
-<%= simple_form_for @card, html: { class: 'form-horizontal', :multipart => true },
+<%= simple_form_for [@deck, @card],
+  html: { class: 'form-horizontal', :multipart => true },
   wrapper: :horizontal_form,
   wrapper_mappings: {
     date: :horizontal_date
@@ -19,7 +20,7 @@
         <%= f.text_field :remote_image_url %>
       </p>
       <%= f.submit :class => 'btn btn-primary' %>
-      <%= link_to 'Назад', cards_path, :class => 'btn btn-primary' %>
+      <%= link_to 'Назад', deck_path(@deck), :class => 'btn btn-primary' %>
     </div>
   </div>
 <% end %>

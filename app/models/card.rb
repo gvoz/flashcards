@@ -1,6 +1,6 @@
 # Model Flash Cards
 class Card < ApplicationRecord
-  belongs_to :user
+  belongs_to :deck
   mount_uploader :image, CardUploader
   validates :original_text, :translated_text, :review_date, presence: true
   validate :original_and_translated_text_not_equal
@@ -22,10 +22,6 @@ class Card < ApplicationRecord
 
   def change_review_date
     self.update(review_date: 3.days.from_now)
-  end
-
-  def self.user_cards(user_id)
-    where(user_id: user_id)
   end
 
   scope :reviewed, -> { where('review_date <= ?', Time.now) }

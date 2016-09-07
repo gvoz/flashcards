@@ -2,51 +2,51 @@
 class CardsController < ApplicationController
   before_action :require_login
 
-  def index
-    @cards = Card.user_cards(current_user.id).all
-  end
-
   def show
-    @card = Card.user_cards(current_user.id).find(params[:id])
+    @deck = Deck.find(params[:deck_id])
+    @card = @deck.cards.find(params[:id])
   end
 
   def new
-    @card = Card.user_cards(current_user.id).new
+    @deck = Deck.user_decks(current_user.id).find(params[:deck_id])
+    @card = @deck.cards.build
   end
 
   def edit
-    @card = Card.user_cards(current_user.id).find(params[:id])
+    @deck = Deck.find(params[:deck_id])
+    @card = @deck.cards.find(params[:id])
   end
 
   def create
-    @card = Card.user_cards(current_user.id).new(card_params)
+    @deck = Deck.user_decks(current_user.id).find(params[:deck_id])
+    @card = @deck.cards.build(card_params)
 
     if @card.save
-      redirect_to @card
+      redirect_to deck_card_path(params[:deck_id], @card)
     else
       render 'new'
     end
   end
 
   def update
-    @card = Card.user_cards(current_user.id).find(params[:id])
+    @card = Card.find(params[:id])
 
     if @card.update(card_params)
-      redirect_to @card
+      redirect_to deck_card_path(params[:deck_id], @card)
     else
       render 'edit'
     end
   end
 
   def destroy
-    @card = Card.user_cards(current_user.id).find(params[:id])
+    @card = Card.find(params[:id])
     @card.destroy
 
-    redirect_to cards_path
+    redirect_to deck_path(params[:deck_id])
   end
 
   def checktranslate
-    @card = Card.user_cards(current_user.id).find(params[:id])
+    @card = Card.find(params[:id])
     if @card.check_translation?(params[:user_text])
       flash[:success] = "Правильный перевод"
       @card.change_review_date
@@ -55,8 +55,6 @@ class CardsController < ApplicationController
     end
     redirect_to root_path
   end
-
-
 
   private
 

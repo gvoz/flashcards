@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
-  has_many :cards, dependent: :destroy
+  has_many :decks, dependent: :destroy
 
   validates :password, length: { minimum: 3 }, if: :password
   validates :password, confirmation: true, if: :password
