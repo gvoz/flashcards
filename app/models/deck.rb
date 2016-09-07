@@ -6,8 +6,8 @@ class Deck < ApplicationRecord
 
   before_save do
     if current
-      #@decks = Deck.user_decks(user_id).current
-      #@decks.update(current: true)
+      @deck = Deck.user_decks(user_id).current
+      @deck.update(current: false)
     end
   end
 
