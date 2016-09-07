@@ -1,4 +1,4 @@
-# This class work with Decks
+# this class work with Decks
 class DecksController < ApplicationController
   before_action :require_login
 
@@ -47,7 +47,7 @@ class DecksController < ApplicationController
 
   private
 
-    def deck_params
-      params.require(:deck).permit(:name.to_s, :description.to_s, :current)
-    end
+  def deck_params
+    params.require(:deck).permit(:name.to_s, :description.to_s, :current)
+  end
 end

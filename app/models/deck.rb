@@ -1,4 +1,4 @@
-# Model Deck of Flash Cards
+# model Deck of Flash Cards
 class Deck < ApplicationRecord
   belongs_to :user
   validates :name, presence: true

@@ -2,7 +2,6 @@ require "rails_helper"
 require "support/login_helper"
 
 feature "Deck managment", type: :feature do
-
   let!(:user) { create(:user, email: "bob@mail.ru", password: "qweqweqwe") }
   let!(:deck) { create(:deck, user: user) }
   let!(:card) { create(:card, deck: deck) }
@@ -34,9 +33,8 @@ feature "Deck managment", type: :feature do
     deck.update(current: false)
     card.destroy
     other_deck = create(:deck, user: user)
-    card = create(:card, deck: other_deck, translated_text: "page", review_date: -15.days.from_now)
+    create(:card, deck: other_deck, translated_text: "page", review_date: -15.days.from_now)
     visit root_path
     expect(page).to have_content "page"
   end
-
 end

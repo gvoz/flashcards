@@ -1,4 +1,4 @@
-# This class work with Flash Cards
+# this class work with Flash Cards
 class CardsController < ApplicationController
   before_action :require_login
 
