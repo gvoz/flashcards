@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :deck do
-    association(:user)
+    user
     name "deck"
     description "test deck"
     current true

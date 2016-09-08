@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post "logout" => "user_sessions#destroy", :as => "logout"
   get "login" => "user_sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
-  get "check/:id" => "cards#checktranslate", :as => "check"
+  post "check" => "cards#checktranslate", :as => "check"
 
   resources :users
   resources :user_sessions

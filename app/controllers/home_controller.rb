@@ -7,7 +7,7 @@ class HomeController < ApplicationController
       else
         @card = current_user.cards.reviewed.random_cards.first
       end
-      redirect_to decks_path if @card.nil?
+      redirect_to decks_path unless @card
     else
       redirect_to home_about_path
     end

@@ -21,7 +21,7 @@ class DecksController < ApplicationController
   def create
     @deck = current_user.decks.new(deck_params)
     if @deck.save
-      @deck.one_current if @deck.current
+      @deck.make_current if @deck.current
       redirect_to @deck
     else
       render 'new'
@@ -31,7 +31,7 @@ class DecksController < ApplicationController
   def update
     deck
     if @deck.update(deck_params)
-      @deck.one_current if @deck.current
+      @deck.make_current if @deck.current
       redirect_to deck
     else
       render 'edit'
@@ -46,7 +46,7 @@ class DecksController < ApplicationController
   private
 
     def deck_params
-      params.require(:deck).permit(:name.to_s, :description.to_s, :current)
+      params.require(:deck).permit(:name, :description, :current)
     end
 
     def deck

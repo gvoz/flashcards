@@ -4,7 +4,7 @@ class Deck < ApplicationRecord
   validates :name, presence: true
   has_many :cards, dependent: :destroy
 
-  def one_current
+  def make_current
     user.decks.update_all(current: false)
     update_columns(current: true)
   end
