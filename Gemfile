@@ -62,3 +62,5 @@ gem 'sorcery'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+# Version ruby for Heroku
+ruby "2.3.0"
