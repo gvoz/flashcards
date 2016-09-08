@@ -5,9 +5,10 @@ class Deck < ApplicationRecord
   has_many :cards, dependent: :destroy
 
   def one_current
-    self.user.decks.update_all(current: false)
+    user.decks.update_all(current: false)
     update_columns(current: true)
   end
 
   scope :current, -> { where(current: true) }
+  scope :order_current, -> { order('current desc') }
 end

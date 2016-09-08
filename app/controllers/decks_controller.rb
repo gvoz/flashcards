@@ -3,7 +3,7 @@ class DecksController < ApplicationController
   before_action :require_login
 
   def index
-    @decks = current_user.decks
+    @decks = current_user.decks.order_current
   end
 
   def show
