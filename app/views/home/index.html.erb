@@ -1,4 +1,4 @@
-<%= simple_form_for @card, url: checktranslate_card_path(@card.id), method: 'get',
+<%= simple_form_for @card, url: check_path(id: @card), method: 'post',
     html: { class: 'form-horizontal' },  wrapper: :horizontal_form do |f| %>
 
   <div class="row-fluid">

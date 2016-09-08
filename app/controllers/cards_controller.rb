@@ -1,52 +1,44 @@
-# This class work with Flash Cards
+# this class work with Flash Cards
 class CardsController < ApplicationController
   before_action :require_login
 
-  def index
-    @cards = Card.user_cards(current_user.id).all
-  end
-
   def show
-    @card = Card.user_cards(current_user.id).find(params[:id])
+    card
   end
 
   def new
-    @card = Card.user_cards(current_user.id).new
+    @card = deck.cards.new
   end
 
   def edit
-    @card = Card.user_cards(current_user.id).find(params[:id])
+    card
   end
 
   def create
-    @card = Card.user_cards(current_user.id).new(card_params)
-
+    @card = deck.cards.new(card_params)
+    @card.user_id = current_user.id
     if @card.save
-      redirect_to @card
+      redirect_to deck_card_path(deck, @card)
     else
       render 'new'
     end
   end
 
   def update
-    @card = Card.user_cards(current_user.id).find(params[:id])
-
-    if @card.update(card_params)
-      redirect_to @card
+    if card.update(card_params)
+      redirect_to deck_card_path(deck, @card)
     else
       render 'edit'
     end
   end
 
   def destroy
-    @card = Card.user_cards(current_user.id).find(params[:id])
-    @card.destroy
-
-    redirect_to cards_path
+    card.destroy
+    redirect_to deck_path(deck)
   end
 
   def checktranslate
-    @card = Card.user_cards(current_user.id).find(params[:id])
+    @card = Card.find(params[:id])
     if @card.check_translation?(params[:user_text])
       flash[:success] = "Правильный перевод"
       @card.change_review_date
@@ -56,11 +48,17 @@ class CardsController < ApplicationController
     redirect_to root_path
   end
 
-
-
   private
 
     def card_params
       params.require(:card).permit(:original_text.to_s.strip, :translated_text.to_s.strip, :review_date, :image, :remote_image_url)
+    end
+
+    def deck
+      @deck = current_user.decks.find(params[:deck_id])
+    end
+
+    def card
+      @card = deck.cards.find(params[:id])
     end
 end

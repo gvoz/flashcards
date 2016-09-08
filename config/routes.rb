@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   post "logout" => "user_sessions#destroy", :as => "logout"
   get "login" => "user_sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
+  post "check" => "cards#checktranslate", :as => "check"
+
   resources :users
   resources :user_sessions
-  resources :cards do
-    get :checktranslate, on: :member
+  resources :decks do
+    resources :cards
   end
 
   root 'home#index'

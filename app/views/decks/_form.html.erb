@@ -1,0 +1,11 @@
+<%= simple_form_for @deck, html: { class: 'form-horizontal'},
+  wrapper: :horizontal_form do |f| %>
+
+  <%= f.error_notification %>
+  <%= f.input :name, label: 'Наименование колоды' %>
+  <%= f.input :description, label: 'Описание колоды' %>
+  <%= f.input :current, label: 'Текущая колода', as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= f.submit :class => 'btn btn-primary' %>
+  <%= link_to 'Назад', decks_path, :class => 'btn btn-primary' %>
+
+<% end %>

@@ -2,9 +2,9 @@ require "rails_helper"
 require "support/login_helper"
 
 feature "User managment", type: :feature do
-  let!(:user) { create(:user, email: "bob@mail.ru", password: "qweqweqwe") }
+  let!(:user) { create :user }
   before :each do
-    login("bob@mail.ru", "qweqweqwe")
+    login("email@email.com", "password")
   end
 
   it "Login" do
