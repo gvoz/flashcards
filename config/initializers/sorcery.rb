@@ -116,9 +116,9 @@ Rails.application.config.sorcery.configure do |config|
   # config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
   # config.twitter.user_info_mapping = {:email => "screen_name"}
   #
-  config.facebook.key = "#{Rails.application.secrets.sorcery_facebook_key}"
-  config.facebook.secret = "#{Rails.application.secrets.sorcery_facebook_secret}"
-  config.facebook.callback_url = "#{Rails.application.secrets.sorcery_facebook_callback_url}"
+  config.facebook.key = ENV["SORCERY_FACEBOOK_KEY"]
+  config.facebook.secret = ENV["SORCERY_FACEBOOK_SECRET"]
+  config.facebook.callback_url = ENV["SORCERY_FACEBOOK_CALLBACK_URL"]
   config.facebook.user_info_mapping =  { :email => "email" }
   config.facebook.scope = "email"
   config.facebook.access_permissions = %w(email, publish_actions)
@@ -136,9 +136,9 @@ Rails.application.config.sorcery.configure do |config|
   # config.google.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=google"
   # config.google.user_info_mapping = {:email => "email", :username => "name"}
   #
-  config.vk.key = "#{Rails.application.secrets.sorcery_vk_key}"
-  config.vk.secret = "#{Rails.application.secrets.sorcery_vk_secret}"
-  config.vk.callback_url = "#{Rails.application.secrets.sorcery_vk_callback_url}"
+  config.vk.key = ENV["SORCERY_VK_KEY"]
+  config.vk.secret = ENV["SORCERY_VK_SECRET"]
+  config.vk.callback_url = ENV["SORCERY_VK_CALLBACK_URL"]
   config.vk.user_info_mapping = { :email => "email" }
   #
   # To use liveid in development mode you have to replace mydomain.com with
