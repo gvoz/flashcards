@@ -1,5 +1,4 @@
 require "rails_helper"
-#require "support/minitest_helper"
 
 describe Card do
   let!(:user) { create :user }
