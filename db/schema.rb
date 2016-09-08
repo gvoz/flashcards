@@ -31,8 +31,10 @@ ActiveRecord::Schema.define(version: 20160907120044) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "image"
+    t.integer  "user_id"
     t.integer  "deck_id"
     t.index ["deck_id"], name: "index_cards_on_deck_id", using: :btree
+    t.index ["user_id"], name: "index_cards_on_user_id", using: :btree
   end
 
   create_table "decks", force: :cascade do |t|

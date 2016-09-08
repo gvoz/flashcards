@@ -3,46 +3,38 @@ class CardsController < ApplicationController
   before_action :require_login
 
   def show
-    @deck = Deck.find(params[:deck_id])
-    @card = @deck.cards.find(params[:id])
+    card
   end
 
   def new
-    @deck = Deck.user_decks(current_user.id).find(params[:deck_id])
-    @card = @deck.cards.build
+    @card = deck.cards.new
   end
 
   def edit
-    @deck = Deck.find(params[:deck_id])
-    @card = @deck.cards.find(params[:id])
+    card
   end
 
   def create
-    @deck = Deck.user_decks(current_user.id).find(params[:deck_id])
-    @card = @deck.cards.build(card_params)
-
+    @card = deck.cards.new(card_params)
+    @card.user_id = current_user.id
     if @card.save
-      redirect_to deck_card_path(params[:deck_id], @card)
+      redirect_to deck_card_path(deck, @card)
     else
       render 'new'
     end
   end
 
   def update
-    @card = Card.find(params[:id])
-
-    if @card.update(card_params)
-      redirect_to deck_card_path(params[:deck_id], @card)
+    if card.update(card_params)
+      redirect_to deck_card_path(deck, @card)
     else
       render 'edit'
     end
   end
 
   def destroy
-    @card = Card.find(params[:id])
-    @card.destroy
-
-    redirect_to deck_path(params[:deck_id])
+    card.destroy
+    redirect_to deck_path(deck)
   end
 
   def checktranslate
@@ -60,5 +52,13 @@ class CardsController < ApplicationController
 
     def card_params
       params.require(:card).permit(:original_text.to_s.strip, :translated_text.to_s.strip, :review_date, :image, :remote_image_url)
+    end
+
+    def deck
+      @deck = current_user.decks.find(params[:deck_id])
+    end
+
+    def card
+      @card = deck.cards.find(params[:id])
     end
 end

@@ -3,25 +3,25 @@ class DecksController < ApplicationController
   before_action :require_login
 
   def index
-    @decks = Deck.user_decks(current_user.id).all
+    @decks = current_user.decks
   end
 
   def show
-    @deck = Deck.find(params[:id])
+    deck
   end
 
   def new
-    @deck = Deck.user_decks(current_user.id).new
+    @deck = current_user.decks.new
   end
 
   def edit
-    @deck = Deck.find(params[:id])
+    deck
   end
 
   def create
-    @deck = Deck.user_decks(current_user.id).new(deck_params)
-
+    @deck = current_user.decks.new(deck_params)
     if @deck.save
+      @deck.one_current if @deck.current
       redirect_to @deck
     else
       render 'new'
@@ -29,25 +29,27 @@ class DecksController < ApplicationController
   end
 
   def update
-    @deck = Deck.find(params[:id])
-
+    deck
     if @deck.update(deck_params)
-      redirect_to @deck
+      @deck.one_current if @deck.current
+      redirect_to deck
     else
       render 'edit'
     end
   end
 
   def destroy
-    @deck = Deck.find(params[:id])
-    @deck.destroy
-
+    deck.destroy
     redirect_to decks_path
   end
 
   private
 
-  def deck_params
-    params.require(:deck).permit(:name.to_s, :description.to_s, :current)
-  end
+    def deck_params
+      params.require(:deck).permit(:name.to_s, :description.to_s, :current)
+    end
+
+    def deck
+      @deck = current_user.decks.find(params[:id])
+    end
 end

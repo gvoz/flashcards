@@ -4,15 +4,9 @@ class Deck < ApplicationRecord
   validates :name, presence: true
   has_many :cards, dependent: :destroy
 
-  before_save do
-    if current
-      @deck = Deck.user_decks(user_id).current
-      @deck.update(current: false)
-    end
-  end
-
-  def self.user_decks(user_id)
-    where(user_id: user_id)
+  def one_current
+    self.user.decks.update_all(current: false)
+    update_columns(current: true)
   end
 
   scope :current, -> { where(current: true) }
