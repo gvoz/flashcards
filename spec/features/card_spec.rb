@@ -31,18 +31,6 @@ feature "Card managment", type: :feature do
       expect(page).to have_css("img[src*='images.jpeg']")
     end
 
-    it "image on show card page" do
-      visit deck_path(deck)
-      click_link "Показать"
-      expect(page).to have_css("img[src*='images.jpeg']")
-    end
-
-    it "image on edit card page" do
-      visit deck_path(deck)
-      click_link "Редактировать"
-      expect(page).to have_css("img[src*='images.jpeg']")
-    end
-
     it "add image" do
       visit new_deck_card_path(deck)
       fill_in "card[original_text]", with: "hause"
