@@ -43,7 +43,12 @@ class Card < ApplicationRecord
     change_review_date(review_interval)
   end
 
-  def change_number_of_mistakes
+  def correct_translation
+    update_columns(number_of_mistakes: 0)
+    increase_review_interval
+  end
+
+  def incorrect_translation
     if number_of_mistakes == 3
       update_columns(number_of_mistakes: 0)
       decrease_review_interval
