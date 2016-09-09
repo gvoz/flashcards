@@ -1,3 +1,4 @@
+# Change review date from date to datetime
 class ChangeTypeReviewDateInCards < ActiveRecord::Migration[5.0]
   def up
     change_table :cards do |t|

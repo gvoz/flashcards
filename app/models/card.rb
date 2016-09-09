@@ -22,7 +22,7 @@ class Card < ApplicationRecord
   end
 
   def increase_review_interval
-    if review_interval == 0
+    if review_interval.zero?
       update_columns(review_interval: 0.5)
     elsif review_interval == 0.5
       update_columns(review_interval: 3)
@@ -37,8 +37,8 @@ class Card < ApplicationRecord
       update_columns(review_interval: 0.5)
     elsif review_interval == 0.5
       update_columns(review_interval: 0)
-    elsif review_interval != 0
-      update_columns(review_interval: (review_interval - 1)/2 )
+    elsif review_interval.nonzero?
+      update_columns(review_interval: (review_interval - 1) / 2 )
     end
     change_review_date(review_interval)
   end

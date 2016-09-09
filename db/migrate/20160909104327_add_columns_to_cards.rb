@@ -1,3 +1,4 @@
+# Add colums for spaced repetition
 class AddColumnsToCards < ActiveRecord::Migration[5.0]
   def change
     add_column :cards, :review_interval, :float, default: 0
