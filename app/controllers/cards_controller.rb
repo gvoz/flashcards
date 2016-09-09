@@ -41,9 +41,10 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     if @card.check_translation?(params[:user_text])
       flash[:success] = "Правильный перевод"
-      @card.change_review_date
+      @card.increase_review_interval
     else
       flash[:error] = "Неправильный перевод"
+      @card.change_number_of_mistakes
     end
     redirect_to root_path
   end
