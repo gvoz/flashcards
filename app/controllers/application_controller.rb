@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-    def not_authenticated
-      flash[:error] = "Войдите для доступа"
-      redirect_to login_url
-    end
+  def not_authenticated
+    flash[:error] = "Войдите для доступа"
+    redirect_to login_url
+  end
 end

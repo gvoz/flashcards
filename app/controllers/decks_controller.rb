@@ -45,11 +45,11 @@ class DecksController < ApplicationController
 
   private
 
-    def deck_params
-      params.require(:deck).permit(:name, :description, :current)
-    end
+  def deck_params
+    params.require(:deck).permit(:name, :description, :current)
+  end
 
-    def deck
-      @deck = current_user.decks.find(params[:id])
-    end
+  def deck
+    @deck = current_user.decks.find(params[:id])
+  end
 end

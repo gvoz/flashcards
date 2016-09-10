@@ -38,7 +38,7 @@ class OauthsController < ApplicationController
 
   private
 
-    def provider
-      params.require(:provider)
-    end
+  def provider
+    params.require(:provider)
+  end
 end
