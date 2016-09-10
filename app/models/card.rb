@@ -21,21 +21,31 @@ class Card < ApplicationRecord
     user_text.strip.mb_chars.downcase == original_text.mb_chars.downcase
   end
 
+  def calculation_review_interval(review_interval, type, up = 1)
+    if up == 1
+      type.zero? ? 5 * review_interval + 0.5 : 2 * review_interval + 1
+    else
+      type.zero? ? (review_interval - 0.5) / 5 : (review_interval - 1) / 2
+    end
+  end
+
   def increase_review_interval
     if review_interval.zero? || review_interval == 0.5
-      update_columns(review_interval: 5 * review_interval + 0.5)
+      type = 0
     elsif review_interval != 31
-      update_columns(review_interval: 2 * review_interval + 1)
+      type = 1
     end
+    update_columns(review_interval: calculation_review_interval(review_interval, type)) if type
     change_review_date(review_interval)
   end
 
   def decrease_review_interval
     if review_interval == 3 || review_interval == 0.5
-      update_columns(review_interval: (review_interval - 0.5) / 5 )
+      type = 0
     elsif review_interval.nonzero?
-      update_columns(review_interval: (review_interval - 1) / 2 )
+      type = 1
     end
+    update_columns(review_interval: calculation_review_interval(review_interval, type, 0)) if type
     change_review_date(review_interval)
   end
 
