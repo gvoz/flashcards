@@ -14,16 +14,20 @@ class OauthsController < ApplicationController
       flash[:success] = "Вы вошли через #{provider.titleize}!"
       redirect_to root_path
     else
-      begin
-        @user = create_from(provider)
-        reset_session # protect from session fixation attack
-        auto_login(@user)
-        flash[:success] = "Вы вошли через #{provider.titleize}!"
-        redirect_to root_path
-      rescue
-        flash[:error] = "Ошибка входа через #{provider.titleize}!"
-        redirect_to home_about_path
-      end
+      create_user
+    end
+  end
+
+  def create_user
+    begin
+      @user = create_from(provider)
+      reset_session
+      auto_login(@user)
+      flash[:success] = "Вы вошли через #{provider.titleize}!"
+      redirect_to root_path
+    rescue
+      flash[:error] = "Ошибка входа через #{provider.titleize}!"
+      redirect_to home_about_path
     end
   end
 

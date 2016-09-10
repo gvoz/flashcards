@@ -1,4 +1,5 @@
-# README [![Build Status](https://travis-ci.org/gvoz/flashcards.svg)](https://travis-ci.org/gvoz/flashcards.svg?branch=master)
+# README [![Build Status](https://travis-ci.org/gvoz/flashcards.svg)](https://travis-ci.org/gvoz/flashcards)
+[![Code Climate](https://codeclimate.com/github/gvoz/flashcards/badges/gpa.svg)](https://codeclimate.com/github/gvoz/flashcards)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
