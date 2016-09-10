@@ -19,16 +19,14 @@ class OauthsController < ApplicationController
   end
 
   def create_user
-    begin
-      @user = create_from(provider)
-      reset_session
-      auto_login(@user)
-      flash[:success] = "Вы вошли через #{provider.titleize}!"
-      redirect_to root_path
-    rescue
-      flash[:error] = "Ошибка входа через #{provider.titleize}!"
-      redirect_to home_about_path
-    end
+    @user = create_from(provider)
+    reset_session
+    auto_login(@user)
+    flash[:success] = "Вы вошли через #{provider.titleize}!"
+    redirect_to root_path
+  rescue
+    flash[:error] = "Ошибка входа через #{provider.titleize}!"
+    redirect_to home_about_path
   end
 
   def check_user_email
