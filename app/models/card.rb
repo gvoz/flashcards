@@ -22,7 +22,7 @@ class Card < ApplicationRecord
   end
 
   def increase_review_interval
-    if review_interval.zero? or review_interval == 0.5
+    if review_interval.zero? || review_interval == 0.5
       update_columns(review_interval: 5 * review_interval + 0.5)
     elsif review_interval != 31
       update_columns(review_interval: 2 * review_interval + 1)
@@ -31,7 +31,7 @@ class Card < ApplicationRecord
   end
 
   def decrease_review_interval
-    if review_interval == 3 or review_interval == 0.5
+    if review_interval == 3 || review_interval == 0.5
       update_columns(review_interval: (review_interval - 0.5) / 5 )
     elsif review_interval.nonzero?
       update_columns(review_interval: (review_interval - 1) / 2 )
