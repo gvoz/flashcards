@@ -30,21 +30,23 @@ class Card < ApplicationRecord
   end
 
   def increase_review_interval
-    type = if review_interval.zero? || review_interval == 0.5
-      0
-    elsif review_interval != 31
-      1
-    end
+    type =
+      if review_interval.zero? || review_interval == 0.5
+        0
+      elsif review_interval != 31
+        1
+      end
     update_columns(review_interval: calculation_review_interval(review_interval, type)) if type
     change_review_date(review_interval)
   end
 
   def decrease_review_interval
-    type = if review_interval == 3 || review_interval == 0.5
-      0
-    elsif review_interval.nonzero?
-      1
-    end
+    type =
+      if review_interval == 3 || review_interval == 0.5
+        0
+      elsif review_interval.nonzero?
+        1
+      end
     update_columns(review_interval: calculation_review_interval(review_interval, type, 0)) if type
     change_review_date(review_interval)
   end
