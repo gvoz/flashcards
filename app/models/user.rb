@@ -15,4 +15,11 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: :password
 
   validates :email, uniqueness: true
+  validates_format_of :email, with: /@/
+
+  def self.cards_notification
+    User.joins(:cards).merge(Card.reviewed).uniq.each do |user|
+      CardsMailer.pending_cards_notification(user).deliver
+    end
+  end
 end

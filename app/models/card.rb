@@ -13,12 +13,12 @@ class Card < ApplicationRecord
   def original_and_translated_text_not_equal
     unless original_text.blank? || translated_text.blank?
       errors.add(:original_text, 'не должен совпадать с переведённым') if
-        original_text.strip.mb_chars.casecmp(translated_text.strip.mb_chars.downcase).zero?
+        comparing_strings(original_text, translated_text)
     end
   end
 
   def check_translation?(user_text)
-    user_text.strip.mb_chars.casecmp(original_text.mb_chars.downcase).zero?
+    comparing_strings(user_text, original_text)
   end
 
   def search_misprint(user_text)
@@ -71,6 +71,10 @@ class Card < ApplicationRecord
 
   def change_review_date(review_interval = 3)
     update_columns(review_date: review_interval.days.from_now)
+  end
+
+  def comparing_strings(str1, str2)
+    str1.strip.mb_chars.casecmp(str2.strip.mb_chars.downcase).zero?
   end
 
   scope :reviewed, -> { where('review_date <= ?', Time.now) }
