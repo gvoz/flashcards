@@ -62,5 +62,9 @@ gem 'sorcery'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+
+# Use Damerau Levenshtein distance for search misprint
+gem "damerau-levenshtein"
+
 # Version ruby for Heroku
 ruby "2.3.0"

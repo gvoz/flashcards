@@ -42,6 +42,9 @@ class CardsController < ApplicationController
     if @card.check_translation?(params[:user_text])
       flash[:success] = "Правильный перевод"
       @card.correct_translation
+    elsif @card.search_misprint(params[:user_text]) <= 2
+      flash[:notice] = "Возможно допущена опечатка. Правильный перевод: #{@card.original_text}. Ваш перевод: #{params[:user_text]}"
+      @card.change_review_date(@card.review_interval)
     else
       flash[:error] = "Неправильный перевод"
       @card.incorrect_translation
@@ -51,15 +54,15 @@ class CardsController < ApplicationController
 
   private
 
-    def card_params
-      params.require(:card).permit(:original_text.to_s.strip, :translated_text.to_s.strip, :review_date, :image, :remote_image_url)
-    end
+  def card_params
+    params.require(:card).permit(:original_text.to_s.strip, :translated_text.to_s.strip, :review_date, :image, :remote_image_url)
+  end
 
-    def deck
-      @deck = current_user.decks.find(params[:deck_id])
-    end
+  def deck
+    @deck = current_user.decks.find(params[:deck_id])
+  end
 
-    def card
-      @card = deck.cards.find(params[:id])
-    end
+  def card
+    @card = deck.cards.find(params[:id])
+  end
 end

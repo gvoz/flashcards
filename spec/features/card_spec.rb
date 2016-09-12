@@ -18,9 +18,16 @@ feature "Card managment", type: :feature do
       expect(page).to have_content "Правильный перевод"
     end
 
-    it "incorrect" do
+    it "misprint" do
       visit root_path
       fill_in :user_text, with: "hausse"
+      click_button "Проверить перевод"
+      expect(page).to have_content "Возможно допущена опечатка"
+    end
+
+    it "incorrect" do
+      visit root_path
+      fill_in :user_text, with: "battle"
       click_button "Проверить перевод"
       expect(page).to have_content "Неправильный перевод"
     end

@@ -13,12 +13,16 @@ class Card < ApplicationRecord
   def original_and_translated_text_not_equal
     unless original_text.blank? || translated_text.blank?
       errors.add(:original_text, 'не должен совпадать с переведённым') if
-        original_text.strip.mb_chars.downcase == translated_text.strip.mb_chars.downcase
+        original_text.strip.mb_chars.casecmp(translated_text.strip.mb_chars.downcase).zero?
     end
   end
 
   def check_translation?(user_text)
-    user_text.strip.mb_chars.downcase == original_text.mb_chars.downcase
+    user_text.strip.mb_chars.casecmp(original_text.mb_chars.downcase).zero?
+  end
+
+  def search_misprint(user_text)
+    DamerauLevenshtein.distance(user_text.strip.mb_chars.downcase, original_text.mb_chars.downcase)
   end
 
   def calculation_review_interval(review_interval, type, up = 1)
