@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   def self.cards_notification
     User.joins(:cards).merge(Card.reviewed).uniq.each do |user|
-      CardsMailer.pending_cards_notification(user).deliver
+      CardsMailer.pending_cards_notification(user).deliver_now
     end
   end
 end

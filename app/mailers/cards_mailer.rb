@@ -1,3 +1,4 @@
+# Cards Mailer
 class CardsMailer < ApplicationMailer
   default from: ENV["EMAIL"]
 
