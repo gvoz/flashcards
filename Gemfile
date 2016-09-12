@@ -66,5 +66,8 @@ gem 'fog-aws'
 # Use Damerau Levenshtein distance for search misprint
 gem "damerau-levenshtein"
 
+# schedule
+gem 'whenever', require: false
+
 # Version ruby for Heroku
 ruby "2.3.0"
