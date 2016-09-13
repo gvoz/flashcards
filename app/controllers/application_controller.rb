@@ -7,9 +7,16 @@ class ApplicationController < ActionController::Base
     locale =
       if current_user
         current_user.language
+      elsif params[:locale]
+        session[:locale] = params[:locale]
+      elsif session[:locale]
+        session[:locale]
       else
-        params[:locale] || http_accept_language.compatible_language_from(I18n.available_locales)
+        http_accept_language.compatible_language_from(I18n.available_locales)
       end
+    if locale && I18n.available_locales.include?(locale.to_sym)
+      session[:locale] = I18n.locale = locale.to_sym
+    end
   end
 
   def default_url_options(options = {})
