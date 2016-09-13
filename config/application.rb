@@ -17,5 +17,6 @@ module Flashcards
         ENV[key.to_s] = value
       end if File.exist?(env_file)
     end
+    config.i18n.available_locales = [:ru, :en]
   end
 end

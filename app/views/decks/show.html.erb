@@ -1,15 +1,15 @@
-<h2>Колода <%= @deck.name %></h2>
+<h2><%= t :deck, deck: @deck.name %></h2>
 <div class="collapse navbar-collapse">
   <ul class="nav navbar-nav">
-    <li><%= link_to 'Добавить карточку', new_deck_card_path(@deck) %></li>
+    <li><%= link_to t(:add_card), new_deck_card_path(@deck) %></li>
   </ul>
 </div>
 <p><%= @deck.description %></p>
 <table class="table table-hover">
   <thead><tr>
-    <th>Оригинальный текст</th>
-    <th>Перевод текста</th>
-    <th>Дата пересмотра</th>
+    <th><%= t :original_text %></th>
+    <th><%= t :translated_text %></th>
+    <th><%= t :review_date %></th>
   </tr></thead>
 
   <tbody><% @deck.cards.each do |card| %>
@@ -17,11 +17,11 @@
       <td><%= card.original_text %></td>
       <td><%= card.translated_text %></td>
       <td><%= card.review_date.strftime("%d/%m/%Y") %></td>
-      <td><%= link_to 'Показать', deck_card_path(@deck, card) %></td>
-      <td><%= link_to 'Редактировать', edit_deck_card_path(@deck, card) %></td>
-      <td><%= link_to 'Удалить', deck_card_path(@deck, card),
+      <td><%= link_to t(:view), deck_card_path(@deck, card) %></td>
+      <td><%= link_to t(:edit), edit_deck_card_path(@deck, card) %></td>
+      <td><%= link_to t(:delete), deck_card_path(@deck, card),
                     method: :delete,
-                        data: { confirm: 'Вы уверены?' } %></td>
+                        data: { confirm: t(:confirm) } %></td>
     </tr>
   <% end %></tbody>
 </table>

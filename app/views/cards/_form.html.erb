@@ -9,18 +9,18 @@
   <div class="row-fluid">
     <div class="span5"><%= image_tag @card.image_url if @card.image? %></div>
     <div class="span7">
-      <%= f.input :original_text, label: 'Оригинальный текст' %>
-      <%= f.input :translated_text, label: 'Перевод текста' %>
-      <%= f.input :review_date, label: 'Дата пересмотра', as: :date %>
+      <%= f.input :original_text %>
+      <%= f.input :translated_text %>
+      <%= f.input :review_date, as: :date %>
       <p>
-        <%= f.file_field :image %>
+        <%= f.file_field :image, class: "filestyle", 'data-buttonText' => t(:card_image) %>
       </p>
       <p>
-        <%= f.label :remote_image_url, "or image URL" %><br />
+        <%= f.label :remote_image_url, t(:image_URL) %><br />
         <%= f.text_field :remote_image_url %>
       </p>
       <%= f.submit :class => 'btn btn-primary' %>
-      <%= link_to 'Назад', deck_path(@deck), :class => 'btn btn-primary' %>
+      <%= link_to t(:back), deck_path(@deck), :class => 'btn btn-primary' %>
     </div>
   </div>
 <% end %>

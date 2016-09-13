@@ -43,7 +43,7 @@ feature "Card managment", type: :feature do
       fill_in "card[original_text]", with: "hause"
       fill_in "card[translated_text]", with: "дом"
       attach_file "card[image]", "#{Rails.root}/spec/images/images.jpeg"
-      click_button "Create Card"
+      click_button "Создать Карточку"
       expect(page).to have_css("img[src*='images.jpeg']")
     end
   end

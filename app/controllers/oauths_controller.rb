@@ -11,7 +11,7 @@ class OauthsController < ApplicationController
   def callback
     check_user_email
     if @user = login_from(provider)
-      flash[:success] = "Вы вошли через #{provider.titleize}!"
+      flash[:success] = t(:login_success_provider, provider: provider.titleize)
       redirect_to root_path
     else
       create_user
@@ -22,10 +22,10 @@ class OauthsController < ApplicationController
     @user = create_from(provider)
     reset_session
     auto_login(@user)
-    flash[:success] = "Вы вошли через #{provider.titleize}!"
+    flash[:success] = t(:login_success_provider, provider: provider.titleize)
     redirect_to root_path
   rescue
-    flash[:error] = "Ошибка входа через #{provider.titleize}!"
+    flash[:error] = t(:login_error_provider, provider: provider.titleize)
     redirect_to home_about_path
   end
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Флэшкарточкер</title>
+    <title><%= t(:flash) %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,20 +11,33 @@
   <body>
     <section id="container">
       <header class="clearfix">
-        <h1><a href='/'>Флэшкарточкер</a></h1>
+        <div class="col-xs-12 col-md-10">
+          <h1><a href='/'><%= t(:flash) %></a></h1>
+        </div>
 
+        <div class="col-xs-6 col-md-2">
+          <div class="btn-group">
+            <% if I18n.locale == :en %>
+              <%= link_to "Eng", root_path(locale: "en"), class: 'btn btn-default btn-xs disabled' %>
+              <%= link_to "Рус", root_path(locale: "ru"), class: 'btn btn-default btn-xs' %>
+            <% elsif I18n.locale == :ru %>
+              <%= link_to "Eng", root_path(locale: "en"), class: 'btn btn-default btn-xs' %>
+              <%= link_to "Рус", root_path(locale: "ru"), class: 'btn btn-default btn-xs disabled' %>
+            <% end %>
+          </div>
+        </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <% if current_user %>
-              <li><%= link_to "Профиль", edit_user_path(current_user.id) %></li>
-              <li><%= link_to "Выйти", logout_path, method: :post %></li>
-              <li><%= link_to 'Все колоды', decks_path %></li>
-              <li><%= link_to 'Добавить колоду', new_deck_path %></li>
+              <li><%= link_to t(:profile), edit_user_path(current_user.id) %></li>
+              <li><%= link_to t(:logout), logout_path, method: :post %></li>
+              <li><%= link_to t(:all_decks), decks_path %></li>
+              <li><%= link_to t(:add_deck), new_deck_path %></li>
             <% else %>
-              <li><%= link_to "Зарегистрироваться", signup_path %></li>
-              <li><%= link_to "Войти", login_path %></li>
-              <li><%= link_to 'Войти через вконтакте', auth_at_provider_path(:provider => :vk) %></li>
-              <li><%= link_to 'Войти через facebook', auth_at_provider_path(:provider => :facebook) %></li>
+              <li><%= link_to t(:registration), signup_path %></li>
+              <li><%= link_to t(:login), login_path %></li>
+              <li><%= link_to t(:login_vk), auth_at_provider_path(:provider => :vk) %></li>
+              <li><%= link_to t(:login_facebook), auth_at_provider_path(:provider => :facebook) %></li>
             <% end %>
           </ul>
         </div>
@@ -35,7 +48,7 @@
         <p class="text-success"><%= flash[:success] %></p>
       </div>
       <% if current_user %>
-        <p class="lead">Вы вошли как <%= current_user.email %></p>
+        <p class="lead"><%= t :login_user, user: current_user.email %></p>
       <% end %>
       <section><%= yield %></section>
     </section>

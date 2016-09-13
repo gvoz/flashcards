@@ -1,0 +1,158 @@
+ru:
+  flash: 'Флэшкарточкер'
+  profile: 'Профиль'
+  logout: 'Выйти'
+  all_decks: 'Все колоды'
+  add_deck: 'Добавить колоду'
+  registration: 'Зарегистрироваться'
+  login: 'Войти'
+  login_vk: 'Войти через вконтакте'
+  login_facebook: 'Войти через facebook'
+  login_user: 'Вы вошли как %{user}'
+  edit_deck_path: 'Редактирование колоды'
+  new_deck_path: 'Новая колода'
+  back: 'Назад'
+  create: 'Создать'
+  update: 'Обновить'
+  add: 'Добавить'
+  edit: 'Изменить'
+  view: 'Просмотр'
+  delete: 'Удалить'
+  confirm: 'Вы уверены?'
+  original_text: 'Оригинальный текст'
+  translated_text: 'Перевод текста'
+  review_date: 'Дата пересмотра'
+  add_card: 'Добавить карточку'
+  new_card: 'Новая карточка'
+  edit_card: 'Редактирование карточки'
+  deck: 'Колода %{deck}'
+  current_deck: 'Текущая колода'
+  user_text: "Введите перевод"
+  text: 'Текст'
+  check_translate: 'Проверить перевод'
+  translate_success: "Правильный перевод"
+  translate_misprint: "Возможно допущена опечатка. Правильный перевод: %{original_text}. Ваш перевод: %{user_text}"
+  translate_error: "Неправильный перевод"
+  login_success_provider: 'Вы вошли через %{provider}!'
+  login_error_provider: 'Ошибка входа через %{provider}!'
+  login_success: 'Вы вошли'
+  login_error: 'Email или пароль неправильные'
+  logout_success: 'Вы вышли'
+  registration_success: "Вы зарегистрировались!"
+  email: "Введите email"
+  password: "Введите пароль"
+  remember_me: "Запомнить меня"
+  card_image: 'Выберите файл'
+  image_URL: "или укажите ссылку"
+  activerecord:
+    models:
+      user: 'Пользователя'
+      card: 'Карточку'
+      deck: 'Колоду'
+    errors:
+      models:
+        card:
+          attributes:
+            original_text:
+              blank: "Пожалуйста, введите оригинальный текст"
+              original_and_translated_text_not_equal: "Оригинальный и переведенный тексты должны отличаться"
+            translated_text:
+              blank: "Пожалуйста, введите переведенный текст"
+        user:
+          attributes:
+            email:
+              blank: "Пожалуйста, укажите свой адрес e-mail"
+              taken: "Пользователь с таким e-mail уже существует"
+              invalid: "Введенная строка не похожа на e-mail"
+            password:
+              blank: "Пожалуйста, укажите пароль"
+              confirmation: "Введенные пароли не совпадаю, пожалуйста, попробуйте еще раз."
+              too_short: "Пароль не должен быть короче 3-х символов."
+            password_confirmation:
+              blank: "Пожалуйста, введите подтверждение пароля"
+              confirmation: "Введенные пароли не совпадаю, пожалуйста, попробуйте еще раз."
+        deck:
+          attributes:
+            name:
+              blank: "Название колоды не должно быть пустым"
+  simple_form:
+    error_notification:
+      default_message: "Пожалуйста, ознакомьтесь с проблемами ниже:"
+    labels:
+      user:
+        language: 'Ваш язык'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+      deck:
+        name: 'Наименование колоды'
+        description: 'Описание колоды'
+        current: 'Текущая колода'
+      card:
+        original_text: 'Оригинальный текст'
+        translated_text: 'Перевод текста'
+        review_date: 'Дата пересмотра'
+        image: 'Выберите файл'
+  decks:
+    index:
+      name: 'Наименование'
+      description: 'Описание'
+  helpers:
+    select:
+      prompt: 'Выберите: '
+    submit:
+      create: Создать %{model}
+      submit: Сохранить %{model}
+      update: Сохранить %{model}
+  date:
+    abbr_day_names:
+    - Вс
+    - Пн
+    - Вт
+    - Ср
+    - Чт
+    - Пт
+    - Сб
+    abbr_month_names:
+    -
+    - янв.
+    - февр.
+    - марта
+    - апр.
+    - мая
+    - июня
+    - июля
+    - авг.
+    - сент.
+    - окт.
+    - нояб.
+    - дек.
+    day_names:
+    - воскресенье
+    - понедельник
+    - вторник
+    - среда
+    - четверг
+    - пятница
+    - суббота
+    formats:
+      default: "%d.%m.%Y"
+      long: "%-d %B %Y"
+      short: "%-d %b"
+    month_names:
+    -
+    - января
+    - февраля
+    - марта
+    - апреля
+    - мая
+    - июня
+    - июля
+    - августа
+    - сентября
+    - октября
+    - ноября
+    - декабря
+    order:
+      - :day
+      - :month
+      - :year

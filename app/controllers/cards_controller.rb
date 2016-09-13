@@ -40,13 +40,13 @@ class CardsController < ApplicationController
   def checktranslate
     @card = Card.find(params[:id])
     if @card.check_translation?(params[:user_text])
-      flash[:success] = "Правильный перевод"
+      flash[:success] = t(:translate_success)
       @card.correct_translation
     elsif @card.search_misprint(params[:user_text]) <= 2
-      flash[:notice] = "Возможно допущена опечатка. Правильный перевод: #{@card.original_text}. Ваш перевод: #{params[:user_text]}"
+      flash[:notice] = t(:translate_misprint, original_text: @card.original_text, user_text: params[:user_text])
       @card.change_review_date(@card.review_interval)
     else
-      flash[:error] = "Неправильный перевод"
+      flash[:error] = t(:translate_error)
       @card.incorrect_translation
     end
     redirect_to root_path
