@@ -4,12 +4,12 @@
   <div class="row-fluid">
     <div class="span5"><%= image_tag @card.image_url if @card.image? %></div>
     <div class="span7">
-      <%= f.input :translated_text, label: t(:text), disabled: true, required: false %>
+      <%= f.input :translated_text, label: t('.text'), disabled: true, required: false %>
       <div class="form-group text required card_original_text">
-        <%= label_tag(:user_text, t(:user_text), class: "text required col-sm-3 control-label") %>
+        <%= label_tag(:user_text, t('.user_text'), class: "text required col-sm-3 control-label") %>
         <div class="col-sm-9"><%= text_area_tag(:user_text, '', class: "text required form-control") %></div>
       </div>
-      <%= f.button :submit, t(:check_translate), :class => 'btn btn-primary' %>
+      <%= f.button :submit, t('.check_translate'), :class => 'btn btn-primary' %>
     </div>
   </div>
 <% end %>

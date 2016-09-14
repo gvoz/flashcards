@@ -1,4 +1,4 @@
-<h2>Список колод</h2>
+<h2><%= t('.title') %></h2>
 <table class="table table-hover">
   <thead><tr>
     <th><%= t '.name' %></th>
@@ -9,12 +9,12 @@
     <tr>
       <td><%= deck.name %></td>
       <td><%= deck.description %></td>
-      <td><%= t(:current_deck) if deck.current %></td>
-      <td><%= link_to t(:view), deck_path(deck) %></td>
-      <td><%= link_to t(:edit), edit_deck_path(deck) %></td>
-      <td><%= link_to t(:delete), deck_path(deck),
+      <td><%= t('.current') if deck.current %></td>
+      <td><%= link_to t('.view'), deck_path(deck) %></td>
+      <td><%= link_to t('.edit'), edit_deck_path(deck) %></td>
+      <td><%= link_to t('.delete'), deck_path(deck),
                     method: :delete,
-                        data: { confirm: t(:confirm) } %></td>
+                        data: { confirm: t('.confirm') } %></td>
     </tr>
   <% end %></tbody>
 </table>

@@ -1,47 +1,5 @@
 ru:
-  flash: 'Флэшкарточкер'
-  profile: 'Профиль'
-  logout: 'Выйти'
-  all_decks: 'Все колоды'
-  add_deck: 'Добавить колоду'
-  registration: 'Зарегистрироваться'
-  login: 'Войти'
-  login_vk: 'Войти через вконтакте'
-  login_facebook: 'Войти через facebook'
-  login_user: 'Вы вошли как %{user}'
-  edit_deck_path: 'Редактирование колоды'
-  new_deck_path: 'Новая колода'
   back: 'Назад'
-  create: 'Создать'
-  update: 'Обновить'
-  add: 'Добавить'
-  edit: 'Изменить'
-  view: 'Просмотр'
-  delete: 'Удалить'
-  confirm: 'Вы уверены?'
-  original_text: 'Оригинальный текст'
-  translated_text: 'Перевод текста'
-  review_date: 'Дата пересмотра'
-  add_card: 'Добавить карточку'
-  new_card: 'Новая карточка'
-  edit_card: 'Редактирование карточки'
-  deck: 'Колода %{deck}'
-  current_deck: 'Текущая колода'
-  user_text: "Введите перевод"
-  text: 'Текст'
-  check_translate: 'Проверить перевод'
-  translate_success: "Правильный перевод"
-  translate_misprint: "Возможно допущена опечатка. Правильный перевод: %{original_text}. Ваш перевод: %{user_text}"
-  translate_error: "Неправильный перевод"
-  login_success_provider: 'Вы вошли через %{provider}!'
-  login_error_provider: 'Ошибка входа через %{provider}!'
-  login_success: 'Вы вошли'
-  login_error: 'Email или пароль неправильные'
-  logout_success: 'Вы вышли'
-  registration_success: "Вы зарегистрировались!"
-  email: "Введите email"
-  password: "Введите пароль"
-  remember_me: "Запомнить меня"
   card_image: 'Выберите файл'
   image_URL: "или укажите ссылку"
   activerecord:
@@ -91,11 +49,79 @@ ru:
         original_text: 'Оригинальный текст'
         translated_text: 'Перевод текста'
         review_date: 'Дата пересмотра'
-        image: 'Выберите файл'
+  layouts:
+    application:
+      flash: 'Флэшкарточкер'
+      profile: 'Профиль'
+      logout: 'Выйти'
+      all_decks: 'Все колоды'
+      add_deck: 'Добавить колоду'
+      registration: 'Зарегистрироваться'
+      login: 'Войти'
+      login_vk: 'Войти через вконтакте'
+      login_facebook: 'Войти через facebook'
+      login_user: 'Вы вошли как %{user}'
+  home:
+    index:
+      user_text: "Введите перевод"
+      text: 'Текст'
+      check_translate: 'Проверить перевод'
   decks:
     index:
+      title: 'Список колод'
       name: 'Наименование'
       description: 'Описание'
+      view: 'Просмотр'
+      edit: 'Изменить'
+      delete: 'Удалить'
+      confirm: 'Вы уверены?'
+      current: 'Текущая колода'
+    show:
+      title: 'Колода %{deck}'
+      add_card: 'Добавить карточку'
+      view: 'Просмотр'
+      edit: 'Изменить'
+      delete: 'Удалить'
+      confirm: 'Вы уверены?'
+    new:
+      title: 'Новая колода'
+    edit:
+      title: 'Редактирование колоды'
+  cards:
+    show:
+      original_text: 'Оригинальный текст'
+      translated_text: 'Перевод текста'
+      review_date: 'Дата пересмотра'
+    new:
+      title: 'Новая карточка'
+    edit:
+      title: 'Редактирование карточки'
+    checktranslate:
+      success: "Правильный перевод"
+      notice: "Возможно допущена опечатка. Правильный перевод: %{original_text}. Ваш перевод: %{user_text}"
+      error: "Неправильный перевод"
+  users:
+    new:
+      title: 'Зарегистрироваться'
+    edit:
+      title: 'Редактировать профиль'
+    create:
+        success: "Вы зарегистрировались!"
+  user_sessions:
+    new:
+      login: 'Войти'
+      email: "Введите email"
+      password: "Введите пароль"
+      remember_me: "Запомнить меня"
+    create:
+      success: 'Вы вошли'
+      error: 'Email или пароль неправильные'
+    destroy:
+      success: 'Вы вышли'
+  oauths:
+    create:
+      success: 'Вы вошли через %{provider}!'
+      error: 'Ошибка входа через %{provider}!'
   helpers:
     select:
       prompt: 'Выберите: '

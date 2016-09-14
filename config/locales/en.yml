@@ -1,43 +1,5 @@
 en:
-  flash: 'FlashCards'
-  profile: 'Profile'
-  logout: 'Logout'
-  all_decks: 'All decks'
-  new_deck: 'Add deck'
-  registration: 'Registration'
-  login: 'Login'
-  login_vk: 'Login vk'
-  login_facebook: 'Login facebook'
-  login_user: 'You login %{user}'
-  edit_deck_path: 'Update deck'
-  new_deck_path: 'New deck'
   back: 'Back'
-  create: 'Create'
-  update: 'Update'
-  add: 'Add'
-  edit: 'Edit'
-  view: 'View'
-  delete: 'Delete'
-  confirm: 'Are you sure?'
-  new_card: 'New card'
-  edit_card: 'Edit card'
-  deck: 'Deck %{deck}'
-  current_deck: 'Current deck'
-  user_text: "Enter the translation"
-  text: 'Text'
-  check_translate: 'Check translate'
-  translate_success: "Correct translation"
-  translate_misprint: "Probably a misprint. Correct translation: %{original_text}. Your translation: %{user_text}"
-  translate_error: "Wrong translation"
-  login_success_provider: 'You login in %{provider}!'
-  login_error_provider: 'Login failed in %{provider}!'
-  login_success: 'You login'
-  login_error: 'Email or password is wrong'
-  logout_success: 'You logout'
-  registration_success: "You are registered!"
-  email: "Enter email"
-  password: "Enter password"
-  remember_me: "Remember me"
   card_image: 'Choose file'
   image_URL: "or image URL"
   activerecord:
@@ -74,9 +36,66 @@ en:
   simple_form:
     error_notification:
       default_message: "Please review the problems below:"
-    labels:
-      card:
-        image: 'Select the file'
+  layouts:
+    application:
+      flash: 'FlashCards'
+      profile: 'Profile'
+      logout: 'Logout'
+      all_decks: 'All decks'
+      new_deck: 'Add deck'
+      registration: 'Registration'
+      login: 'Login'
+      login_vk: 'Login vk'
+      login_facebook: 'Login facebook'
+      login_user: 'You login %{user}'
+  home:
+    index:
+      user_text: "Enter the translation"
+      text: 'Text'
+      check_translate: 'Check translate'
+  decks:
+    index:
+      title: 'List of decks'
+      confirm: 'Are you sure?'
+      current: 'Current deck'
+    show:
+      title: 'Deck %{deck}'
+      confirm: 'Are you sure?'
+    new:
+      title: 'New deck'
+    edit:
+      title: 'Update deck'
+  cards:
+    new:
+      title: 'New card'
+    edit:
+      title: 'Edit card'
+    checktranslate:
+      success: "Correct translation"
+      notice: "Probably a misprint. Correct translation: %{original_text}. Your translation: %{user_text}"
+      error: "Wrong translation"
+  users:
+    new:
+      title: 'Registration'
+    edit:
+      title: 'Edit profile'
+    create:
+      success: "You are registered!"
+  user_sessions:
+    new:
+      login: 'Login'
+      email: "Enter email"
+      password: "Enter password"
+      remember_me: "Remember me"
+    create:
+      success: 'You login'
+      error: 'Email or password is wrong'
+    destroy:
+      success: 'You logout'
+  oauths:
+    create:
+      success: 'You login in %{provider}!'
+      error: 'Login failed in %{provider}!'
   original_text: 'Original text'
   translated_text: 'Translated text'
   review_date: 'Review date'
