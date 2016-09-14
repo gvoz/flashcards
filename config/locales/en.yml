@@ -1,23 +1,101 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  back: 'Back'
+  card_image: 'Choose file'
+  image_URL: "or image URL"
+  activerecord:
+    models:
+      user: 'User'
+      card: 'Card'
+      deck: 'Deck'
+    errors:
+      models:
+        card:
+          attributes:
+            original_text:
+              blank: "Please, input the original text"
+              original_and_translated_text_not_equal: "Original and translated text must be different"
+            translated_text:
+              blank: "Please, input the translated text"
+        user:
+          attributes:
+            email:
+              blank: "Please, insert your e-mail"
+              taken: "The user with that e-mail already registered"
+              invalid: "That don't looks like an e-mail"
+            password:
+              blank: "Please, insert your password"
+              confirmation: "The password confirmation is wrong, please, retipe youre password one more time."
+              too_short: "THe password shouldn't be shorter than 3 sumbols"
+            password_confirmation:
+              blank: "Please, insert password confirmation"
+              confirmation: "The password confirmation is wrong, please, retipe youre password one more time."
+        deck:
+          attributes:
+            name:
+              blank: "Deck name shouldn't be emply"
+  simple_form:
+    error_notification:
+      default_message: "Please review the problems below:"
+  layouts:
+    application:
+      flash: 'FlashCards'
+      profile: 'Profile'
+      logout: 'Logout'
+      all_decks: 'All decks'
+      new_deck: 'Add deck'
+      registration: 'Registration'
+      login: 'Login'
+      login_vk: 'Login vk'
+      login_facebook: 'Login facebook'
+      login_user: 'You login %{user}'
+  home:
+    index:
+      user_text: "Enter the translation"
+      text: 'Text'
+      check_translate: 'Check translate'
+  decks:
+    index:
+      title: 'List of decks'
+      confirm: 'Are you sure?'
+      current: 'Current deck'
+    show:
+      title: 'Deck %{deck}'
+      confirm: 'Are you sure?'
+    new:
+      title: 'New deck'
+    edit:
+      title: 'Update deck'
+  cards:
+    new:
+      title: 'New card'
+    edit:
+      title: 'Edit card'
+    checktranslate:
+      success: "Correct translation"
+      notice: "Probably a misprint. Correct translation: %{original_text}. Your translation: %{user_text}"
+      error: "Wrong translation"
+  users:
+    new:
+      title: 'Registration'
+    edit:
+      title: 'Edit profile'
+    create:
+      success: "You are registered!"
+  user_sessions:
+    new:
+      login: 'Login'
+      email: "Enter email"
+      password: "Enter password"
+      remember_me: "Remember me"
+    create:
+      success: 'You login'
+      error: 'Email or password is wrong'
+    destroy:
+      success: 'You logout'
+  oauths:
+    create:
+      success: 'You login in %{provider}!'
+      error: 'Login failed in %{provider}!'
+  original_text: 'Original text'
+  translated_text: 'Translated text'
+  review_date: 'Review date'

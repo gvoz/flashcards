@@ -69,5 +69,8 @@ gem "damerau-levenshtein"
 # schedule
 gem 'whenever', require: false
 
+# Internationalization
+gem 'http_accept_language'
+
 # Version ruby for Heroku
 ruby "2.3.0"

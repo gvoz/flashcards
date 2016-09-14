@@ -6,16 +6,16 @@ class UserSessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password], params[:remember_me])
-      flash[:success] = "Вы вошли!"
+      flash[:success] = t('.success')
       redirect_to root_url
     else
-      flash[:error] = 'Email или пароль неправильные'
+      flash[:error] = t('.error')
       render :new
     end
   end
 
   def destroy
     logout
-    redirect_to home_about_path, notice: 'Вы вышли'
+    redirect_to home_about_path, notice: t('.success')
   end
 end
