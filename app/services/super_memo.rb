@@ -39,5 +39,4 @@ class SuperMemo
       efactor * interval
     end
   end
-
 end

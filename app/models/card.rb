@@ -22,7 +22,8 @@ class Card < ApplicationRecord
       review_date: interval.days.from_now,
       review_interval: interval,
       repeat: repeat,
-      efactor: efactor)
+      efactor: efactor
+      )
   end
 
   def comparing_strings(str1, str2)

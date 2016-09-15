@@ -28,5 +28,4 @@ class Quality
   def error?
     @quality == 'error'
   end
-
 end
