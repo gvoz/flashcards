@@ -1,6 +1,5 @@
 # SuperMemo algorithm https://www.supermemo.com/english/ol/sm2.htm
 class SuperMemo
-
   def self.change_interval(card, distance)
     quality = get_quality(distance)
     efactor = quality > 2 ? get_efactor(quality, card.efactor) : card.efactor
@@ -18,7 +17,7 @@ class SuperMemo
   end
 
   def self.get_efactor(quality, efactor)
-    efactor = efactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02))
+    efactor += (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02))
     efactor > 1.3 ? efactor : 1.3
   end
 
