@@ -1,3 +1,4 @@
+# SuperMemo algorithm https://www.supermemo.com/english/ol/sm2.htm
 class SuperMemo
 
   def self.change_interval(card, distance)

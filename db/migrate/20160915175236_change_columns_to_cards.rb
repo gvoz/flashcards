@@ -1,3 +1,4 @@
+# Change columns for SuperMemo
 class ChangeColumnsToCards < ActiveRecord::Migration[5.0]
   def change
     remove_column :cards, :number_of_mistakes

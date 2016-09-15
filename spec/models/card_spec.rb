@@ -47,12 +47,12 @@ describe Card do
     end
 
     context "change efactor" do
-      it 'when quality 5' do
+      it 'change if quality >= 3' do
         SuperMemo.change_interval(card, 0)
         expect(card.efactor).to eq 2.5 + (0.1 - (5 - 5) * (0.08 + (5 - 5) * 0.02))
       end
 
-      it 'when quality 0' do
+      it 'change if quality < 3' do
         efactor = card.efactor
         SuperMemo.change_interval(card, 3)
         expect(card.efactor).to eq efactor

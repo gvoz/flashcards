@@ -1,3 +1,4 @@
+# Result of check translation
 class Quality
 
   def self.check_translate(card, user_text)
