@@ -23,7 +23,7 @@ class Card < ApplicationRecord
       review_interval: interval,
       repeat: repeat,
       efactor: efactor
-      )
+    )
   end
 
   def comparing_strings(str1, str2)

@@ -7,13 +7,14 @@ class Quality
   end
 
   def initialize(distance)
-    if distance.zero?
-      @quality = 'success'
-    elsif distance < 3
-      @quality = 'misprint'
-    else
-      @quality = 'error'
-    end
+    @quality =
+      if distance.zero?
+        'success'
+      elsif distance < 3
+        'misprint'
+      else
+        'error'
+      end
   end
 
   def success?
