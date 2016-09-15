@@ -17,60 +17,12 @@ class Card < ApplicationRecord
     end
   end
 
-  def check_translation?(user_text)
-    comparing_strings(user_text, original_text)
-  end
-
-  def search_misprint(user_text)
-    DamerauLevenshtein.distance(user_text.strip.mb_chars.downcase, original_text.mb_chars.downcase)
-  end
-
-  def calculation_review_interval(review_interval, type, up = 1)
-    if up == 1
-      type.zero? ? 5 * review_interval + 0.5 : 2 * review_interval + 1
-    else
-      type.zero? ? (review_interval - 0.5) / 5 : (review_interval - 1) / 2
-    end
-  end
-
-  def increase_review_interval
-    type =
-      if review_interval.zero? || review_interval == 0.5
-        0
-      elsif review_interval != 31
-        1
-      end
-    update_columns(review_interval: calculation_review_interval(review_interval, type)) if type
-    change_review_date(review_interval)
-  end
-
-  def decrease_review_interval
-    type =
-      if review_interval == 3 || review_interval == 0.5
-        0
-      elsif review_interval.nonzero?
-        1
-      end
-    update_columns(review_interval: calculation_review_interval(review_interval, type, 0)) if type
-    change_review_date(review_interval)
-  end
-
-  def correct_translation
-    update_columns(number_of_mistakes: 0)
-    increase_review_interval
-  end
-
-  def incorrect_translation
-    if number_of_mistakes == 3
-      update_columns(number_of_mistakes: 0)
-      decrease_review_interval
-    else
-      update_columns(number_of_mistakes: number_of_mistakes + 1)
-    end
-  end
-
-  def change_review_date(review_interval = 3)
-    update_columns(review_date: review_interval.days.from_now)
+  def change_review_date(repeat, efactor, interval)
+    update_columns(
+      review_date: interval.days.from_now,
+      review_interval: interval,
+      repeat: repeat,
+      efactor: efactor)
   end
 
   def comparing_strings(str1, str2)
