@@ -7,27 +7,27 @@ describe Card do
 
   context "check translation" do
     it "wrong translation" do
-      quality = Quality.check_translate(card, "battlestart")
+      quality = AccuracyTranslation.check_translate(card, "battlestart")
       expect(quality.error?).to be true
     end
 
     it "correct translation" do
-      quality = Quality.check_translate(card, "hause")
+      quality = AccuracyTranslation.check_translate(card, "hause")
       expect(quality.success?).to be true
     end
 
     it "case-sensitive translation" do
-      quality = Quality.check_translate(card, "HauSe")
+      quality = AccuracyTranslation.check_translate(card, "HauSe")
       expect(quality.success?).to be true
     end
 
     it "misprint" do
-      quality = Quality.check_translate(card, "   hause    ")
+      quality = AccuracyTranslation.check_translate(card, "   hause    ")
       expect(quality.success?).to be true
     end
 
     it "extra spaces translation" do
-      quality = Quality.check_translate(card, "haues")
+      quality = AccuracyTranslation.check_translate(card, "haues")
       expect(quality.misprint?).to be true
     end
   end
