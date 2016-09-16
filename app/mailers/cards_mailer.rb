@@ -5,6 +5,6 @@ class CardsMailer < ApplicationMailer
   def pending_cards_notification(user)
     @user = user
     @url = ENV["SITE"]
-    mail(to: @user.email, subject: 'Уведомление об отложенных картах')
+    mail to: @user.email, subject: 'Уведомление об отложенных картах'
   end
 end

@@ -1,5 +1,5 @@
 # Result of check translation
-class Quality
+class AccuracyTranslation
   def self.check_translate(card, user_text)
     distance = DamerauLevenshtein.distance(user_text.strip.mb_chars.downcase, card.original_text.mb_chars.downcase)
     SuperMemo.change_interval(card, distance)
