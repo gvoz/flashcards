@@ -39,15 +39,13 @@ class CardsController < ApplicationController
 
   def checktranslate
     @card = Card.find(params[:id])
-    if @card.check_translation?(params[:user_text])
+    quality = Quality.check_translate(@card, params[:user_text])
+    if quality.success?
       flash[:success] = t('.success')
-      @card.correct_translation
-    elsif @card.search_misprint(params[:user_text]) <= 2
+    elsif quality.misprint?
       flash[:notice] = t('.notice', original_text: @card.original_text, user_text: params[:user_text])
-      @card.change_review_date(@card.review_interval)
     else
       flash[:error] = t('.error')
-      @card.incorrect_translation
     end
     redirect_to root_path
   end

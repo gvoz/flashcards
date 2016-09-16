@@ -7,85 +7,87 @@ describe Card do
 
   context "check translation" do
     it "wrong translation" do
-      expect(card.check_translation?("battlestart")).to be false
+      quality = Quality.check_translate(card, "battlestart")
+      expect(quality.error?).to be true
     end
 
     it "correct translation" do
-      expect(card.check_translation?("hause")).to be true
+      quality = Quality.check_translate(card, "hause")
+      expect(quality.success?).to be true
     end
 
     it "case-sensitive translation" do
-      expect(card.check_translation?("HauSe")).to be true
+      quality = Quality.check_translate(card, "HauSe")
+      expect(quality.success?).to be true
+    end
+
+    it "misprint" do
+      quality = Quality.check_translate(card, "   hause    ")
+      expect(quality.success?).to be true
     end
 
     it "extra spaces translation" do
-      expect(card.check_translation?("   hause    ")).to be true
+      quality = Quality.check_translate(card, "haues")
+      expect(quality.misprint?).to be true
     end
   end
 
-  it "change review date" do
-    card.change_review_date(5)
-    expect(card.review_date.strftime("%d/%m/%Y")).to eq 5.days.from_now.strftime("%d/%m/%Y")
-  end
+  context "calculation review interval" do
+    context "change repeat" do
+      it "repeat up" do
+        SuperMemo.change_interval(card, 0)
+        expect(card.repeat).to eq 2
+      end
 
-  context "correct translation" do
-    it "reset number of mistakes" do
-      card.correct_translation
-      expect(card.number_of_mistakes).to eq 0
+      it "repeat reset" do
+        card.repeat = 5
+        SuperMemo.change_interval(card, 3)
+        expect(card.repeat).to eq 1
+      end
     end
 
-    it "from 0 to 0.5" do
-      card.review_interval = 0
-      card.correct_translation
-      expect(card.review_interval).to eq 0.5
+    context "change efactor" do
+      it 'change if quality >= 3' do
+        SuperMemo.change_interval(card, 0)
+        expect(card.efactor).to eq 2.5 + (0.1 - (5 - 5) * (0.08 + (5 - 5) * 0.02))
+      end
+
+      it 'change if quality < 3' do
+        efactor = card.efactor
+        SuperMemo.change_interval(card, 3)
+        expect(card.efactor).to eq efactor
+      end
+
+      it 'not more 1.3' do
+        card.efactor = 1.3
+        SuperMemo.change_interval(card, 2)
+        expect(card.efactor).to eq 1.3
+      end
     end
 
-    it "from 0 to 0.5" do
-      card.review_interval = 0.5
-      card.correct_translation
-      expect(card.review_interval).to eq 3
-    end
+    context "change interval" do
+      it 'when repeat 1' do
+        card.repeat = 0
+        SuperMemo.change_interval(card, 0)
+        expect(card.review_interval).to eq 1
+      end
 
-    it "by formula 2x+1" do
-      card.correct_translation
-      expect(card.review_interval).to eq 15
-    end
+      it 'when repeat 2' do
+        SuperMemo.change_interval(card, 0)
+        expect(card.review_interval).to eq 6
+      end
 
-    it "not more 31 days" do
-      card.review_interval = 31
-      card.correct_translation
-      expect(card.review_interval).to eq 31
-    end
-  end
+      it "interval reset" do
+        card.review_interval = 6
+        SuperMemo.change_interval(card, 3)
+        expect(card.review_interval).to eq 1
+      end
 
-  context "incorrect translation" do
-    it "up number of mistakes" do
-      card.number_of_mistakes = 2
-      card.incorrect_translation
-      expect(card.number_of_mistakes).to eq 3
-    end
-
-    it "not less 0 days" do
-      card.review_interval = 0
-      card.incorrect_translation
-      expect(card.review_interval).to eq 0
-    end
-
-    it "from 0.5 to 0" do
-      card.review_interval = 0.5
-      card.incorrect_translation
-      expect(card.review_interval).to eq 0
-    end
-
-    it "from 3 to 0.5" do
-      card.review_interval = 3
-      card.incorrect_translation
-      expect(card.review_interval).to eq 0.5
-    end
-
-    it "by formula (x-1)/2" do
-      card.incorrect_translation
-      expect(card.review_interval).to eq 3
+      it 'use efactor' do
+        card.repeat = 2
+        SuperMemo.change_interval(card, 0)
+        expect(card.review_interval).to eq 7.0 * (2.5 + (0.1 - (5 - 5) * (0.08 + (5 - 5) * 0.02)))
+      end
     end
   end
 end
