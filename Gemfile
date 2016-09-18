@@ -74,3 +74,7 @@ gem 'http_accept_language'
 
 # Version ruby for Heroku
 ruby "2.3.0"
+
+# Add services
+gem 'rollbar'
+gem 'newrelic_rpm'

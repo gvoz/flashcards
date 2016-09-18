@@ -39,10 +39,10 @@ class CardsController < ApplicationController
 
   def checktranslate
     @card = Card.find(params[:id])
-    quality = Quality.check_translate(@card, params[:user_text])
-    if quality.success?
+    result = AccuracyTranslation.check_translate(@card, params[:user_text])
+    if result.success?
       flash[:success] = t('.success')
-    elsif quality.misprint?
+    elsif result.misprint?
       flash[:notice] = t('.notice', original_text: @card.original_text, user_text: params[:user_text])
     else
       flash[:error] = t('.error')

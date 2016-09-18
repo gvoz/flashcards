@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(version: 20160915175236) do
   create_table "cards", force: :cascade do |t|
     t.text     "original_text"
     t.text     "translated_text"
-    t.datetime "review_date"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.string   "image"
     t.integer  "user_id"
     t.integer  "deck_id"
+    t.datetime "review_date",     default: '2016-09-09 12:36:16'
     t.float    "review_interval", default: 0.0
     t.float    "efactor",         default: 2.5
     t.integer  "repeat",          default: 0
