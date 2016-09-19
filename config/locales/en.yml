@@ -2,6 +2,10 @@ en:
   back: 'Back'
   card_image: 'Choose file'
   image_URL: "or image URL"
+  user_text: "Enter the translation"
+  text: 'Text'
+  check_translate: 'Check translate'
+  finish_cards: 'No cards to check'
   activerecord:
     models:
       user: 'User'
@@ -48,11 +52,6 @@ en:
       login_vk: 'Login vk'
       login_facebook: 'Login facebook'
       login_user: 'You login %{user}'
-  home:
-    index:
-      user_text: "Enter the translation"
-      text: 'Text'
-      check_translate: 'Check translate'
   decks:
     index:
       title: 'List of decks'
