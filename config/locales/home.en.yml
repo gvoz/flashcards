@@ -1,0 +1,17 @@
+en:
+  home:
+    user_sessions:
+      new:
+        login: 'Login'
+        email: "Enter email"
+        password: "Enter password"
+        remember_me: "Remember me"
+      create:
+        success: 'You login'
+        error: 'Email or password is wrong'
+      destroy:
+        success: 'You logout'
+    oauths:
+      create:
+        success: 'You login in %{provider}!'
+        error: 'Login failed in %{provider}!'

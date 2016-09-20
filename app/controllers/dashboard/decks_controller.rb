@@ -1,5 +1,5 @@
 # this class work with Decks
-class DecksController < ApplicationController
+class Dashboard::DecksController < Dashboard::ApplicationController
   before_action :require_login
 
   def index

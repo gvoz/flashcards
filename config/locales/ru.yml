@@ -65,62 +65,6 @@ ru:
       login_vk: 'Войти через вконтакте'
       login_facebook: 'Войти через facebook'
       login_user: 'Вы вошли как %{user}'
-  decks:
-    index:
-      title: 'Список колод'
-      name: 'Наименование'
-      description: 'Описание'
-      view: 'Просмотр'
-      edit: 'Изменить'
-      delete: 'Удалить'
-      confirm: 'Вы уверены?'
-      current: 'Текущая колода'
-    show:
-      title: 'Колода %{deck}'
-      add_card: 'Добавить карточку'
-      view: 'Просмотр'
-      edit: 'Изменить'
-      delete: 'Удалить'
-      confirm: 'Вы уверены?'
-    new:
-      title: 'Новая колода'
-    edit:
-      title: 'Редактирование колоды'
-  cards:
-    show:
-      original_text: 'Оригинальный текст'
-      translated_text: 'Перевод текста'
-      review_date: 'Дата пересмотра'
-    new:
-      title: 'Новая карточка'
-    edit:
-      title: 'Редактирование карточки'
-    checktranslate:
-      success: "Правильный перевод"
-      notice: "Возможно допущена опечатка. Правильный перевод: %{original_text}. Ваш перевод: %{user_text}"
-      error: "Неправильный перевод"
-  users:
-    new:
-      title: 'Зарегистрироваться'
-    edit:
-      title: 'Редактировать профиль'
-    create:
-        success: "Вы зарегистрировались!"
-  user_sessions:
-    new:
-      login: 'Войти'
-      email: "Введите email"
-      password: "Введите пароль"
-      remember_me: "Запомнить меня"
-    create:
-      success: 'Вы вошли'
-      error: 'Email или пароль неправильные'
-    destroy:
-      success: 'Вы вышли'
-  oauths:
-    create:
-      success: 'Вы вошли через %{provider}!'
-      error: 'Ошибка входа через %{provider}!'
   helpers:
     select:
       prompt: 'Выберите: '

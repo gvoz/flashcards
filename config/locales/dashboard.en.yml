@@ -1,0 +1,30 @@
+en:
+  dashboard:
+    decks:
+      index:
+        title: 'List of decks'
+        confirm: 'Are you sure?'
+        current: 'Current deck'
+      show:
+        title: 'Deck %{deck}'
+        confirm: 'Are you sure?'
+      new:
+        title: 'New deck'
+      edit:
+        title: 'Update deck'
+    cards:
+      new:
+        title: 'New card'
+      edit:
+        title: 'Edit card'
+      checktranslate:
+        success: "Correct translation"
+        notice: "Probably a misprint. Correct translation: %{original_text}. Your translation: %{user_text}"
+        error: "Wrong translation"
+    users:
+      new:
+        title: 'Registration'
+      edit:
+        title: 'Edit profile'
+      create:
+        success: "You are registered!"

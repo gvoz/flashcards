@@ -1,5 +1,5 @@
 # User Class
-class UsersController < ApplicationController
+class Dashboard::UsersController < Dashboard::ApplicationController
   def new
     @user = User.new
   end

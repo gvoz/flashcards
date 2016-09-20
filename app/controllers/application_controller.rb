@@ -22,11 +22,4 @@ class ApplicationController < ActionController::Base
   def default_url_options(options = {})
     { locale: I18n.locale }.merge options
   end
-
-  private
-
-  def not_authenticated
-    flash[:error] = "Войдите для доступа"
-    redirect_to login_url
-  end
 end

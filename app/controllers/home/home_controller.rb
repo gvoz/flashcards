@@ -1,5 +1,5 @@
 # Home class
-class HomeController < ApplicationController
+class Home::HomeController < Home::ApplicationController
   def index
     if current_user
       @card =
@@ -13,7 +13,11 @@ class HomeController < ApplicationController
         format.js
       end
     else
-      redirect_to home_about_path
+      redirect_to about_path
     end
+  end
+
+  def about
+    render
   end
 end

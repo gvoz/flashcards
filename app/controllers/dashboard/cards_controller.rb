@@ -1,5 +1,5 @@
 # this class work with Flash Cards
-class CardsController < ApplicationController
+class Dashboard::CardsController < Dashboard::ApplicationController
   before_action :require_login
 
   def show
