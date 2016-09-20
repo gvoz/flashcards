@@ -1,0 +1,12 @@
+<% flash.each do |name, msg| %>
+  <div class="bs-docs-example">
+    <% if name == 'error' %>
+      <p class="text-error">
+    <% elsif name == 'success' %>
+      <p class="text-success">
+    <% else %>
+      <p class="text-warning">
+    <% end %>
+    <%= msg %></p>
+  </div>
+<% end %>

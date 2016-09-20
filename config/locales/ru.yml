@@ -2,6 +2,10 @@ ru:
   back: 'Назад'
   card_image: 'Выберите файл'
   image_URL: "или укажите ссылку"
+  user_text: "Введите перевод"
+  text: 'Текст'
+  check_translate: 'Проверить перевод'
+  finish_cards: 'Нет карточек для проверки'
   activerecord:
     models:
       user: 'Пользователя'
@@ -61,11 +65,6 @@ ru:
       login_vk: 'Войти через вконтакте'
       login_facebook: 'Войти через facebook'
       login_user: 'Вы вошли как %{user}'
-  home:
-    index:
-      user_text: "Введите перевод"
-      text: 'Текст'
-      check_translate: 'Проверить перевод'
   decks:
     index:
       title: 'Список колод'

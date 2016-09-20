@@ -1,0 +1,2 @@
+$("#check_translate").html("<%= escape_javascript(render template: 'home/index.html.erb') %>");
+$("#notice").html("<%= escape_javascript(render partial: 'layouts/flash' , locals: { flash: flash }) %>");
