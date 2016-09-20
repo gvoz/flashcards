@@ -1,5 +1,5 @@
-# this class work with Flash Cards
 module Dashboard
+  # this class work with Flash Cards
   class CardsController < Dashboard::ApplicationController
     before_action :require_login
 
