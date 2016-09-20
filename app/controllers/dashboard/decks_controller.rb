@@ -1,5 +1,5 @@
-# this class work with Decks
 module Dashboard
+  # this class work with Decks
   class DecksController < Dashboard::ApplicationController
     before_action :require_login
 

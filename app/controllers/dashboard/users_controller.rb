@@ -1,5 +1,5 @@
-# User Class
 module Dashboard
+  # User Class
   class UsersController < Dashboard::ApplicationController
     def new
       @user = User.new
