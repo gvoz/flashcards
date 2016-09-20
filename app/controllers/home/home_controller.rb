@@ -1,23 +1,25 @@
 # Home class
-class Home::HomeController < Home::ApplicationController
-  def index
-    if current_user
-      @card =
-        if @deck = current_user.decks.current.first
-          @deck.cards.reviewed.random_cards.first
-        else
-          current_user.cards.reviewed.random_cards.first
+module Home
+  class HomeController < ApplicationController
+    def index
+      if current_user
+        @card =
+          if @deck = current_user.decks.current.first
+            @deck.cards.reviewed.random_cards.first
+          else
+            current_user.cards.reviewed.random_cards.first
+          end
+        respond_to do |format|
+          format.html
+          format.js
         end
-      respond_to do |format|
-        format.html
-        format.js
+      else
+        redirect_to about_path
       end
-    else
-      redirect_to about_path
     end
-  end
 
-  def about
-    render
+    def about
+      render
+    end
   end
 end

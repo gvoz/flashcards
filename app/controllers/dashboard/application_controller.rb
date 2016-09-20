@@ -1,6 +1,5 @@
 # ApplicationController for dashboard namespace
 class Dashboard::ApplicationController < ApplicationController
-
   private
 
   def not_authenticated
