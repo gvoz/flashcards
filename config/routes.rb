@@ -1,20 +1,24 @@
 Rails.application.routes.draw do
-  post "oauth/callback" => "oauths#callback"
-  get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
-  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
-  get 'home/about'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  post "logout" => "user_sessions#destroy", :as => "logout"
-  get "login" => "user_sessions#new", :as => "login"
-  get "signup" => "users#new", :as => "signup"
-  post "check" => "cards#checktranslate", :as => "check"
-
-  resources :users
-  resources :user_sessions
-  resources :decks do
-    resources :cards
+  scope module: 'home' do
+    post "oauth/callback" => "oauths#callback"
+    get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
+    get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+    resources :user_sessions
+    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    post "logout" => "user_sessions#destroy", :as => "logout"
+    get "login" => "user_sessions#new", :as => "login"
+    get 'about' => 'home#about'
+    root 'home#index'
   end
 
-  root 'home#index'
+  scope module: 'dashboard' do
+    post "check" => "cards#checktranslate", :as => "check"
+    get "signup" => "users#new", :as => "signup"
+
+    resources :users
+    resources :decks do
+      resources :cards
+    end
+  end
 end

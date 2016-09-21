@@ -1,0 +1,17 @@
+ru:
+  home:
+    user_sessions:
+      new:
+        login: 'Войти'
+        email: "Введите email"
+        password: "Введите пароль"
+        remember_me: "Запомнить меня"
+      create:
+        success: 'Вы вошли'
+        error: 'Email или пароль неправильные'
+      destroy:
+        success: 'Вы вышли'
+    oauths:
+      create:
+        success: 'Вы вошли через %{provider}!'
+        error: 'Ошибка входа через %{provider}!'

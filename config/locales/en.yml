@@ -6,6 +6,9 @@ en:
   text: 'Text'
   check_translate: 'Check translate'
   finish_cards: 'No cards to check'
+  original_text: 'Original text'
+  translated_text: 'Translated text'
+  review_date: 'Review date'
   activerecord:
     models:
       user: 'User'
@@ -52,49 +55,3 @@ en:
       login_vk: 'Login vk'
       login_facebook: 'Login facebook'
       login_user: 'You login %{user}'
-  decks:
-    index:
-      title: 'List of decks'
-      confirm: 'Are you sure?'
-      current: 'Current deck'
-    show:
-      title: 'Deck %{deck}'
-      confirm: 'Are you sure?'
-    new:
-      title: 'New deck'
-    edit:
-      title: 'Update deck'
-  cards:
-    new:
-      title: 'New card'
-    edit:
-      title: 'Edit card'
-    checktranslate:
-      success: "Correct translation"
-      notice: "Probably a misprint. Correct translation: %{original_text}. Your translation: %{user_text}"
-      error: "Wrong translation"
-  users:
-    new:
-      title: 'Registration'
-    edit:
-      title: 'Edit profile'
-    create:
-      success: "You are registered!"
-  user_sessions:
-    new:
-      login: 'Login'
-      email: "Enter email"
-      password: "Enter password"
-      remember_me: "Remember me"
-    create:
-      success: 'You login'
-      error: 'Email or password is wrong'
-    destroy:
-      success: 'You logout'
-  oauths:
-    create:
-      success: 'You login in %{provider}!'
-      error: 'Login failed in %{provider}!'
-  original_text: 'Original text'
-  translated_text: 'Translated text'
-  review_date: 'Review date'
